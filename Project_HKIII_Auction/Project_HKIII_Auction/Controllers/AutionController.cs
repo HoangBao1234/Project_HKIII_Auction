@@ -13,6 +13,7 @@ namespace Project_HKIII_Auction.Controllers
         { 
             string Duy = "HIHI";
             string nhan = "sdasda";
+            string bao = "hihi";
             return View();
             
         }
