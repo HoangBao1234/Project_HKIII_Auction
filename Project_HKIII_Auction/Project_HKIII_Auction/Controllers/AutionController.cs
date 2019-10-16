@@ -11,9 +11,10 @@ namespace Project_HKIII_Auction.Controllers
         // GET: Aution
         public ActionResult Index()
         { 
+            string Duy = "HIHI";
             string nhan = "sdasda";
-            string hihi = "hihi";
             return View();
+            
         }
     }
 }
