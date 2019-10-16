@@ -12,6 +12,7 @@ namespace Project_HKIII_Auction.Controllers
         public ActionResult Index()
         { 
             string nhan = "sdasda";
+            string hihi = "hihi";
             return View();
         }
     }
