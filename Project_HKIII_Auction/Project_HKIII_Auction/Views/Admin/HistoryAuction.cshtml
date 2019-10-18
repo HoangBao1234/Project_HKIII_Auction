@@ -1,10 +1,13 @@
-﻿@model IEnumerable<Project_HKIII_Auction.Models.Product>
+﻿
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = "HistoryAuction";
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
-
-@using (Html.BeginForm("SreachPro", "Admin", FormMethod.Post, new { @class = "form-inline" }))
+@using Newtonsoft.Json;
+@{
+    var result = JsonConvert.DeserializeObject<dynamic>((string)Model);
+}
+@using (Html.BeginForm("SearchHist", "Admin", FormMethod.Post, new { @class = "form-inline" }))
 {
     <label class="sr-only" for="inlineFormInputName2">User Name</label>
     @Html.TextBox("txtSearch", null, new { @class = "form-control mb-2 mr-sm-2", @placeholder = "Product Name" })
@@ -19,32 +22,22 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th> Product ID </th>
+                                <th> User Name </th>
                                 <th> Product Name </th>
-                                <th> Date Start </th>
-                                <th> Date End </th>
-                                <th> Minimun Price </th>
-                                <th> Maximun Price </th>
-                                <th> Description </th>
+                                <th> Starting price </th>
+                                <th> Price Auction </th>
                                 <th> Status </th>
-                                <th> Incremenent </th>
-                                <th> Image </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var i in Model)
+                            @foreach (var i in result)
                             {
                                 <tr>
-                                    <td>@i.PId</td>
+                                    <td>@i.UName</td>
                                     <td>@i.PName</td>
-                                    <td>@i.DateStart</td>
-                                    <td>@i.DateEnd</td>
                                     <td>@i.MinimumPrice</td>
-                                    <td>@i.MaximumPrice</td>
-                                    <td>@i.Description</td>
+                                    <td>@i.PriceAuction</td>
                                     <td>@i.Status</td>
-                                    <td>@i.Incremenent</td>
-                                    <td>@i.Image</td>
                                 </tr>
                             }
                         </tbody>

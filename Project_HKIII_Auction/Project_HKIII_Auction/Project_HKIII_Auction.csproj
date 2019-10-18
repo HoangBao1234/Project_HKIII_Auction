@@ -134,6 +134,7 @@
     <Compile Include="Models\AdminDal.cs" />
     <Compile Include="Models\CategoryDal.cs" />
     <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\HistoryDal.cs" />
     <Compile Include="Models\ProductDal.cs" />
     <Compile Include="Models\Tables.cs" />
     <Compile Include="Models\UserDal.cs" />
@@ -305,6 +306,7 @@
     <Content Include="Views\Admin\Categories.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\Products.cshtml" />
+    <Content Include="Views\Admin\HistoryAuction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

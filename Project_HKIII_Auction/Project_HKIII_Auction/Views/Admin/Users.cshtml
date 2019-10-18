@@ -7,7 +7,7 @@
 @using (Html.BeginForm("SreachUs", "Admin", FormMethod.Post, new {@class = "form-inline" }))
 {
     <label class="sr-only" for="inlineFormInputName2">User Name</label>
-    @Html.TextBox("txtSreach", null, new { @class = "form-control mb-2 mr-sm-2", @placeholder = "UserName"})
+    @Html.TextBox("txtSearch", null, new { @class = "form-control mb-2 mr-sm-2", @placeholder = "UserName"})
     <button type="submit" class="btn btn-gradient-primary mb-2">Search</button>
 }
 <div class="row">
