@@ -12,5 +12,19 @@ namespace Project_HKIII_Auction.Models
         {
             return context.Categories.ToList();
         }
+        public bool Create(Category category)
+        {
+            Category check = context.Categories.SingleOrDefault(e=>e.CId.Equals(category.CId));
+            if (check == null)
+            {
+                context.Categories.Add(category);
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

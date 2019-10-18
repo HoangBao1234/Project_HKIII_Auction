@@ -29,5 +29,40 @@ namespace Project_HKIII_Auction.Controllers
             var PList = (object)JsonConvert.SerializeObject(List);
             return View(PList);
         }
+        public ActionResult CreateCategory()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                if (CDal.Create(category))
+                {
+                    return RedirectToAction("Categories");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return View(category);
+            }
+        }
+        public ActionResult Categories()
+        {
+            return View(CDal.GetCategories());
+        }
+        public ActionResult Users()
+        {
+            return View(UDal.GetUsers());
+        }
+        public ActionResult Products()
+        {
+            return View(PDal.GetProducts());
+        }
     }
 }

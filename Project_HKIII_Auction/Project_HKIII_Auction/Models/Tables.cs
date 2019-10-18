@@ -31,11 +31,10 @@ namespace Project_HKIII_Auction.Models
         public string Image { set; get; }
 
         public virtual ICollection<Product> Products { set; get; }
-        public virtual ICollection<HistoryAuction> HistoryAuctions { set; get; }
+
         public User()
         {
             this.Products = new HashSet<Product>();
-            this.HistoryAuctions = new HashSet<HistoryAuction>();
         }
     }
     public class Product
@@ -91,6 +90,7 @@ namespace Project_HKIII_Auction.Models
         public int CId { set; get; }
         [Required]
         [StringLength(50), MinLength(3)]
+        [Display(Name = "Category Name")]
         public string CName { set; get; }
         public ICollection<Product> Products { set; get; }
         public Category()
@@ -108,7 +108,6 @@ namespace Project_HKIII_Auction.Models
         public string Status { set; get; }
 
         public virtual Product Product { set; get; }
-        public virtual User User { set; get; }
     }
     public class Admin
     {
