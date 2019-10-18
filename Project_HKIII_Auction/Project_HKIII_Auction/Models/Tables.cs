@@ -101,7 +101,7 @@ namespace Project_HKIII_Auction.Models
     public class HistoryAuction
     {
         [Key]
-        public int AUId { set; get; }
+        public int AHId { set; get; }
         public int PId { set; get; }
         public int UId { set; get; }
         public int PriceAuction { set; get; }
