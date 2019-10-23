@@ -87,10 +87,12 @@
 </head>
 <body>
     <div class="signup-form">
-        <form class="" action="index.html" method="post">
+        <form class="" action="~/SignIn/Check_Signin" method="post">
             <h1>Sign Up</h1>
-            <input type="text" placeholder="Full Name" class="txtb">
-            <input type="password" placeholder="Password" class="txtb">
+            <input type="text" name="UName" placeholder="User Name" class="txtb">
+            <span style="color:red">@ViewBag.Msg</span>
+            <input type="password" name="Password" placeholder="Password" class="txtb">
+            <input type="password" placeholder="Confirm Password" class="txtb" />
             <input type="submit" value="Create Account" class="signup-btn">
         </form>
     </div>

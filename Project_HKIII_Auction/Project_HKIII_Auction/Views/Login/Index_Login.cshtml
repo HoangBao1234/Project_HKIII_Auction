@@ -86,10 +86,12 @@
 </head>
 <body>
     <div class="signup-form">
-        <form class="" action="index.html" method="post">
+        <form class="" action="~/Login/Check_Login" method="post">
             <h1>Login</h1>
-            <input type="text" placeholder="Username" class="txtb">
-            <input type="password" placeholder="Password" class="txtb">
+            <input type="text" name="username" placeholder="Username" class="txtb" value="@ViewBag.UserName">
+            <span style="color:red">@ViewBag.MsgU</span>
+            <input type="password" name="password" placeholder="Password" class="txtb">
+            <span style="color:red">@ViewBag.MsgP</span>
             <input type="submit" value="Login" class="signup-btn">
         </form>
     </div>
