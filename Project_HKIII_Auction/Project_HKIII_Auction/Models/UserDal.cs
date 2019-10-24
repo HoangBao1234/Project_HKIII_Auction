@@ -12,5 +12,19 @@ namespace Project_HKIII_Auction.Models
         {
             return context.Users.ToList();
         }
+        public bool Create(User user)
+        {
+            User check = context.Users.SingleOrDefault(e=>e.UName == user.UName);
+            if (check == null)
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
