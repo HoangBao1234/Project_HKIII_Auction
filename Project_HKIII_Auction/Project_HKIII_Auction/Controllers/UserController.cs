@@ -21,5 +21,9 @@ namespace Project_HKIII_Auction.Controllers
         {
             return View();
         }
+        public ActionResult Tivi()
+        {
+            return View();
+        }
     }
 }

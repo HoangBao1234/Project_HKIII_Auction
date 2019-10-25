@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="~/Content/aboutUs.css">
     <link href="https://fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
     <body>
 
         <div class="testimonial-section">
@@ -48,13 +48,47 @@
         </div>
 
         <script type="text/javascript">
-      $('.testimonial-pics img').click(function(){
-        $(".testimonial-pics img").removeClass("active");
-        $(this).addClass("active");
+            $('.testimonial-pics img').click(function () {
+                $(".testimonial-pics img").removeClass("active");
+                $(this).addClass("active");
 
-        $(".testimonial").removeClass("active");
-        $("#"+$(this).attr("alt")).addClass("active");
-      });
+                $(".testimonial").removeClass("active");
+                $("#" + $(this).attr("alt")).addClass("active");
+            });
         </script>
+
+        <div class="roww">
+            <div class="columnn">
+                <div class="card">
+                    <p><i class="fa fa-user"></i></p>
+                    <h3>11+</h3>
+                    <p>Partners</p>
+                </div>
+            </div>
+
+            <div class="columnn">
+                <div class="card">
+                    <p><i class="fa fa-balance-scale"></i></p>
+                    <h3>55+</h3>
+                    <p>Products</p>
+                </div>
+            </div>
+
+            <div class="columnn">
+                <div class="card">
+                    <p><i class="fa fa-smile-o"></i></p>
+                    <h3>100+</h3>
+                    <p>Happy Clients</p>
+                </div>
+            </div>
+
+            <div class="columnn">
+                <div class="card">
+                    <p><i class="fa fa-truck"></i></p>
+                    <h3>100+</h3>
+                    <p>transaction</p>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
