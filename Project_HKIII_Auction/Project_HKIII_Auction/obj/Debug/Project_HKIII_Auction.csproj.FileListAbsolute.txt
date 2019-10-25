@@ -232,7 +232,6 @@ D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Au
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\bin\Newtonsoft.Json.xml
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\bin\Antlr3.Runtime.pdb
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\obj\Debug\Project_HKIII_Auction.csprojAssemblyReference.cache
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\obj\Debug\Project_HKIII_Auction.csproj.CoreCompileInputs.cache
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\obj\Debug\Project_HKIII_Auction.csproj.CopyComplete
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\obj\Debug\Project_HKIII_Auction.dll

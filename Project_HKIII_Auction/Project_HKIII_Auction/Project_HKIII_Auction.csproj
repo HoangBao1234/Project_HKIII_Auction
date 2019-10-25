@@ -210,6 +210,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ContactUs.css" />
+    <Content Include="Content\Products.css" />
     <Content Include="Content\User.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -340,6 +341,7 @@
     <Content Include="Views\SignIn\Index_Signin.cshtml" />
     <Content Include="Views\User\AboutUs.cshtml" />
     <Content Include="Views\User\ContactUs.cshtml" />
+    <Content Include="Views\User\Tivi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

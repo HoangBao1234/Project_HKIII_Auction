@@ -13,12 +13,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link rel="stylesheet" href="~/Content/User.css" />
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="~/Content/User.css" />
 </head>
 <body>
     <nav class="nav navbar-inverse" align="left">
@@ -39,7 +37,7 @@
                 </li>
                 <li><a href="#"><i class='fas fa-mobile-alt' style='font-size:16px'></i> Phone</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Electric Appliances<span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='fas fa-plug' style='font-size:16px'></i> Electric Appliances<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="../chicken.html">Electric cooker</a></li>
                         <li><a href="../Pizza.html">oven mitts</a></li>
@@ -48,7 +46,7 @@
                 </li>
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Furniturer<span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='fas fa-couch' style='font-size:16px'></i> Furniturer<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href=""></a></li>
                         <li><a href="../l">Sofa</a></li>
@@ -57,7 +55,7 @@
                         <li><a href="../l">Lamp</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Watch,Clock</a></li>
+                <li><a href="#"><i class='fas fa-clock' style='font-size:16px'></i> Watch,Clock</a></li>
                 <li><a href="#"><i class="fa fa-fw fa-search"></i> Search</a> </li>
             </ul>
 
@@ -127,13 +125,17 @@
                 <div class="row">
                     <div class="col-lg-4 col-sm-6">
                         <div class="column">
-                            <img src="~/Image/image_home/hinh anh page home/Top-10-Ranking-About-Us-Pages-760x400.png" class="img-thumbnail" alt="Cinque Terre" style="width:100%; height:400px">
+                            <a href="~/Views/User/AboutUs.cshtml">
+                                <img src="~/Image/image_home/hinh anh page home/Top-10-Ranking-About-Us-Pages-760x400.png" class="img-thumbnail" alt="Cinque Terre" style="width:100%; height:400px">
+                            </a>
                         </div>
 
                     </div>
                     <div class="col-lg-4 col-sm-6">
                         <div class="column">
-                            <img src="~/Image/image_home/hinh anh page home/contact-us.jpg" class="img-thumbnail" alt="Cinque Terre" style="width:100%; height:400px">
+                            <a href="~/Views/User/ContactUs.cshtml">
+                                <img src="~/Image/image_home/hinh anh page home/contact-us.jpg" class="img-thumbnail" alt="Cinque Terre" style="width:100%; height:400px">
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-6">
@@ -142,6 +144,41 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <div class="roww">
+        <div class="columnn">
+            <div class="card">
+                <p><i class="fa fa-user"></i></p>
+                <h3>11+</h3>
+                <p>Partners</p>
+            </div>
+        </div>
+
+        <div class="columnn">
+            <div class="card">
+                <p><i class="fa fa-balance-scale"></i></p>
+                <h3>55+</h3>
+                <p>Products</p>
+            </div>
+        </div>
+
+        <div class="columnn">
+            <div class="card">
+                <p><i class="fa fa-smile-o"></i></p>
+                <h3>100+</h3>
+                <p>Happy Clients</p>
+            </div>
+        </div>
+
+        <div class="columnn">
+            <div class="card">
+                <p><i class="fa fa-truck"></i></p>
+                <h3>100+</h3>
+                <p>transaction</p>
             </div>
         </div>
     </div>

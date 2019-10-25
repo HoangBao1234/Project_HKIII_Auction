@@ -66,3 +66,48 @@
   letter-spacing: 4px;
   font-size: 15px;
 }
+
+/* cuoi trang */
+* {
+    box-sizing: border-box;
+}
+/* Float four columns side by side */
+.columnn {
+    float: left;
+    width: 25%;
+    padding: 0 5px;
+}
+
+.roww {
+    margin: 0 -5px;
+}
+
+    /* Clear floats after the columns */
+    .roww:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .columnn {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+/* Style the counter cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #5B2E00;
+    color: white;
+}
+
+.fa {
+    font-size: 20px;
+}
+
