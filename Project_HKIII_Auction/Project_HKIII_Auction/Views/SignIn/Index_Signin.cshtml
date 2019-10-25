@@ -90,9 +90,12 @@
         <form class="" action="~/SignIn/Check_Signin" method="post">
             <h1>Sign Up</h1>
             <input type="text" name="UName" placeholder="User Name" class="txtb">
+            <span style="color:red">@ViewBag.u</span>
             <span style="color:red">@ViewBag.Msg</span>
             <input type="password" name="Password" placeholder="Password" class="txtb">
-            <input type="password" placeholder="Confirm Password" class="txtb" />
+            <span style="color:red">@ViewBag.P</span>
+            <input type="password" name="PassCon" placeholder="Confirm Password" class="txtb" />
+            <span style="color:red">@ViewBag.C</span>
             <input type="submit" value="Create Account" class="signup-btn">
         </form>
     </div>

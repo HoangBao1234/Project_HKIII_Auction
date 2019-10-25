@@ -16,17 +16,39 @@ namespace Project_HKIII_Auction.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Check_Signin(User user)
+        public ActionResult Check_Signin(User user, string passcon)
         {
-            if (dal.Create(user))
+            if(user.UName == null)
             {
-                return RedirectToAction("Index", "User");
+                ViewBag.u = "please enter username";
+                
+                return View("Index_Signin");
+            }
+            if(user.Password == null)
+            {
+                ViewBag.P = "Please enter Password";
+
+                return View("Index_Signin");
+                
+            }
+            if (!user.Password.Equals(passcon))
+            {
+                ViewBag.C = "Password must be the same";
+                return View("Index_Signin");
             }
             else
             {
-                ViewBag.Msg = "This user name has already existed. Please recreate another user name";
-                return View("Index_Signin");
+                if (dal.Create(user))
+                {
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    ViewBag.Msg = "This user name has already existed. Please recreate another user name";
+                    return View("Index_Signin");
+                }
             }
+            
         }
     }
 }

@@ -83,16 +83,19 @@
                 background: rgba(0,0,0,.3);
             }
     </style>
+    
 </head>
 <body>
     <div class="signup-form">
-        <form class="" action="~/Login/Check_Login" method="post">
+        <form name="FormLogin" id="login" action="~/Login/Check_Login" method="post">
             <h1>Login</h1>
-            <input type="text" name="username" placeholder="Username" class="txtb" value="@ViewBag.UserName">
+            <input id="user" type="text" name="username" placeholder="Username" class="txtb" value="@ViewBag.UserName" >
+            <span style="color:red">@ViewBag.u</span>
             <span style="color:red">@ViewBag.MsgU</span>
-            <input type="password" name="password" placeholder="Password" class="txtb">
+            <input id="pass" type="password" name="password" placeholder="Password" class="txtb">
+            <span style="color:red">@ViewBag.p</span>
             <span style="color:red">@ViewBag.MsgP</span>
-            <input type="submit" value="Login" class="signup-btn">
+            <input type="submit" id="submit" name="btnSub" value="Login" class="signup-btn">
         </form>
     </div>
 
