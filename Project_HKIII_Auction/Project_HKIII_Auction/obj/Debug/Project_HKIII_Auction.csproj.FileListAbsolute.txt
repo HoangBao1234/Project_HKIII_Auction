@@ -236,3 +236,5 @@ D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Au
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\obj\Debug\Project_HKIII_Auction.csproj.CopyComplete
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\obj\Debug\Project_HKIII_Auction.dll
 D:\hoc tap IT\project\kì ba\project ki 3\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\obj\Debug\Project_HKIII_Auction.pdb
+D:\Sem3\Project_HKIII_OnlineAuction\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\bin\Glimpse.AspNet.dll
+D:\Sem3\Project_HKIII_OnlineAuction\Project_HKIII_Auction\Project_HKIII_Auction\Project_HKIII_Auction\bin\Glimpse.Core.dll
