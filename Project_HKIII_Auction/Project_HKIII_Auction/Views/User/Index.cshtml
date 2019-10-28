@@ -1,6 +1,12 @@
 ﻿
 @{
     Layout = null;
+    var user = (Project_HKIII_Auction.Common.UserLogin)Session["userSession"];
+    var userName = "hihi";
+    if (user != null)
+    {
+        userName = user.UName;
+    }
 }
 
 <!DOCTYPE html>
@@ -22,7 +28,7 @@
     <nav class="nav navbar-inverse" align="left">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" onClick="openNav();">Aution Market</a>
+                <a class="navbar-brand" href="#" onClick="openNav();">@userName</a>
             </div>
             <ul class="nav navbar-nav">
 

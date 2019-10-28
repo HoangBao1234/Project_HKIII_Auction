@@ -113,6 +113,14 @@ namespace Project_HKIII_Auction.Models
 
         public virtual Product Product { set; get; }
     }
+    public class Notification
+    {
+        [Key]
+        public int NId { set; get; }
+        public int UId { set; get; }
+        public int PId { set; get; }
+        public string Status { set; get; }
+    }
     public class Admin
     {
         [Key]
