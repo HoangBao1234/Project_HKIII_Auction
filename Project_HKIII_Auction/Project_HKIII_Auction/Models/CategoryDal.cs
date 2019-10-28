@@ -26,5 +26,19 @@ namespace Project_HKIII_Auction.Models
                 return false;
             }
         }
+        public bool Delete(int id)
+        {
+            Category check = context.Categories.SingleOrDefault(e=>e.CId == id);
+            if (check != null)
+            {
+                context.Categories.Remove(check);
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

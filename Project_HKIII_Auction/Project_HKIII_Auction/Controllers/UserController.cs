@@ -10,9 +10,18 @@ namespace Project_HKIII_Auction.Controllers
     public class UserController : Controller
     {
         // GET: User
+        AdminDal Adal = new AdminDal();
         ProductDal PDal = new ProductDal();
+        UserDal UDal = new UserDal();
+        CategoryDal CDal = new CategoryDal();
+        HistoryDal HDal = new HistoryDal();
+        Context context = new Context();
         public ActionResult Index()
         {
+            var U = UDal.GetUsers();
+            var P = PDal.GetProducts();
+            var C = CDal.GetCategories();
+            var list = from u in U join p in P on u.UId equals p.UId join c in C on p.CId equals c.CId select new { };
             return View();
         }
         public ActionResult AboutUs()
