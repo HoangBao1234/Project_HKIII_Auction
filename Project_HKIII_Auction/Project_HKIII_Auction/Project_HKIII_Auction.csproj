@@ -256,10 +256,15 @@
     <Content Include="Image\image_AboutUs\65675776_2265448200435486_9171231954220089344_n.jpg" />
     <Content Include="Image\image_AboutUs\contact-us.jpg" />
     <Content Include="Image\image_AboutUs\WEBSITE-WOOD-BACKGROUND.jpg" />
+    <Content Include="Image\Image_HomePage\58da5f335f58be1227aec936.png" />
     <Content Include="Image\Image_HomePage\about.jpg" />
+    <Content Include="Image\Image_HomePage\Avata.jpg" />
+    <Content Include="Image\Image_HomePage\Avata2.jpg" />
+    <Content Include="Image\Image_HomePage\Avata3.jpg" />
     <Content Include="Image\Image_HomePage\bg_1.jpg" />
     <Content Include="Image\Image_HomePage\bg_2.jpg" />
     <Content Include="Image\Image_HomePage\bg_3.jpg" />
+    <Content Include="Image\Image_HomePage\Book.jpg" />
     <Content Include="Image\Image_HomePage\category-1.jpg" />
     <Content Include="Image\Image_HomePage\category-2.jpg" />
     <Content Include="Image\Image_HomePage\category-3.jpg" />
@@ -271,6 +276,8 @@
     <Content Include="Image\Image_HomePage\image_4.jpg" />
     <Content Include="Image\Image_HomePage\image_5.jpg" />
     <Content Include="Image\Image_HomePage\image_6.jpg" />
+    <Content Include="Image\Image_HomePage\Laptop.jpg" />
+    <Content Include="Image\Image_HomePage\MayGiac.jpg" />
     <Content Include="Image\Image_HomePage\partner-1.png" />
     <Content Include="Image\Image_HomePage\partner-2.png" />
     <Content Include="Image\Image_HomePage\partner-3.png" />
@@ -292,6 +299,10 @@
     <Content Include="Image\Image_HomePage\product-7.jpg" />
     <Content Include="Image\Image_HomePage\product-8.jpg" />
     <Content Include="Image\Image_HomePage\product-9.jpg" />
+    <Content Include="Image\Image_HomePage\Sach.jpg" />
+    <Content Include="Image\Image_HomePage\ThuCung.jpg" />
+    <Content Include="Image\Image_HomePage\tivi-samsung-ua40j5250d-1-15335321144211833584688.jpg" />
+    <Content Include="Image\Image_HomePage\Xedap.jpg" />
     <Content Include="Image\image_home\hinh anh page home\1-7.jpg" />
     <Content Include="Image\image_home\hinh anh page home\106-google-pixel-3.jpg" />
     <Content Include="Image\image_home\hinh anh page home\b-as-bathroom-2_12.jpg" />
