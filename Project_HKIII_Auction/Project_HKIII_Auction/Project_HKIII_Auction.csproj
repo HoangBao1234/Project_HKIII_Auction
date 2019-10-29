@@ -447,7 +447,7 @@
     <Content Include="Views\User\Tivi.cshtml" />
     <Content Include="Views\User\CreateProduct.cshtml" />
     <Content Include="Views\Shared\User_Layout.cshtml" />
-    <Content Include="Views\User\test.cshtml" />
+    <Content Include="Views\User\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

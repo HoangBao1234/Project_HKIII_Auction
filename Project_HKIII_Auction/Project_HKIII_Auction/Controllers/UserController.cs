@@ -1,4 +1,5 @@
-﻿using Project_HKIII_Auction.Models;
+﻿using Newtonsoft.Json;
+using Project_HKIII_Auction.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,6 @@ namespace Project_HKIII_Auction.Controllers
         Context context = new Context();
         public ActionResult Index()
         {
-            var U = UDal.GetUsers();
-            var P = PDal.GetProducts();
-            var C = CDal.GetCategories();
-            var list = from u in U join p in P on u.UId equals p.UId join c in C on p.CId equals c.CId select new { };
             return View();
         }
         public ActionResult AboutUs()
@@ -60,9 +57,15 @@ namespace Project_HKIII_Auction.Controllers
                 return View();
             }
         }
-        public ActionResult test()
+        public ActionResult Home()
         {
-            return View();
+
+            var U = UDal.GetUsers();
+            var P = PDal.GetProducts();
+            var C = CDal.GetCategories();
+            var list = from u in U join p in P on u.UId equals p.UId join c in C on p.CId equals c.CId select new {u.UName, p.PName, p.Image, p.MinimumPrice, c.CName, p.DateStart, p.DateEnd, p.PId, p.Incremenent, p.Status };
+            var convert = (object)JsonConvert.SerializeObject(list);
+            return View(convert);
         }
     }
 }
