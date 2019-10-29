@@ -13,7 +13,7 @@ namespace Project_HKIII_Auction.Models
         public int UId { set; get; }
 
         [Required]
-        [StringLength(30), MinLength(3)]
+        [StringLength(30), MinLength(3, ErrorMessage = "Username must be more than 3 characters")]
         public string UName { set; get; }
 
         [Required]
@@ -112,6 +112,14 @@ namespace Project_HKIII_Auction.Models
         public string Status { set; get; }
 
         public virtual Product Product { set; get; }
+    }
+    public class Notification
+    {
+        [Key]
+        public int NId { set; get; }
+        public int UId { set; get; }
+        public int PId { set; get; }
+        public string Status { set; get; }
     }
     public class Admin
     {

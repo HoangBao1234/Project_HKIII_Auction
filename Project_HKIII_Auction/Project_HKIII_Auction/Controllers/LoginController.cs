@@ -1,4 +1,5 @@
-﻿using Project_HKIII_Auction.Models;
+﻿using Project_HKIII_Auction.Common;
+using Project_HKIII_Auction.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Project_HKIII_Auction.Controllers
     {
         // GET: Login
         UserDal dal = new UserDal();
+        AdminDal Adal = new AdminDal();
         public ActionResult Index_Login()
         {
             return View();
@@ -20,40 +22,58 @@ namespace Project_HKIII_Auction.Controllers
         {
             if (string.IsNullOrEmpty(username))
             {
-                ViewBag.u = "please enter username";
-                ViewBag.U = username;
+                ViewBag.u = "Please enter Username";
                 return View("Index_Login");
             }
             if (string.IsNullOrEmpty(password))
             {
-                ViewBag.p = "please enter Password";
+                ViewBag.UserName = username;
+                ViewBag.p = "Please enter Password";
                 return View("Index_Login");
             }
             else
             {
                 User check = dal.GetUsers().SingleOrDefault(e => e.UName == username);
-                if (check != null)
+                Admin admin = Adal.GetAdmins().SingleOrDefault(e => e.AName == username);
+                if (admin != null)
                 {
-                    if (check.Password.Equals(password))
+                    if (admin.Password.Equals(password))
                     {
-                        return RedirectToAction("Index", "User");
+                        var userSession = new UserLogin();
+                        userSession.UId = admin.AId;
+                        userSession.UName = admin.AName;
+                        Session.Add("adminSeesion", userSession);
+                        return RedirectToAction("Index", "Admin");
+                    }
+                }
+                else 
+                {
+                    if (check != null)
+                    {
+                        if (check.Password.Equals(password))
+                        {
+                            var userSession = new UserLogin();
+                            userSession.UId = check.UId;
+                            userSession.UName = check.UName;
+                            Session.Add("userSession", userSession);
+                            return RedirectToAction("Index", "User");
+                        }
+                        else
+                        {
+                            ViewBag.MsgP = "Incorrect Password";
+                            ViewBag.UserName = username;
+                            return View("Index_Login");
+                        }
                     }
                     else
                     {
-                        ViewBag.MsgP = "Incorrect Password";
-                        ViewBag.UserName = username;
+                        ViewBag.MsgU = "Incorrect User Name";
+
                         return View("Index_Login");
                     }
                 }
-                else
-                {
-                    ViewBag.MsgU = "Incorrect User Name";
-
-                    return View("Index_Login");
-                }
             }
-            
-
+            return View();
         }
 
     }
