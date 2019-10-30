@@ -15,6 +15,7 @@ namespace Project_HKIII_Auction.Models
         public bool Create(User user)
         {
             User check = context.Users.SingleOrDefault(e=>e.UName == user.UName);
+            user.Image = "/Image/image_login signin/images.jpg";
             if (check == null)
             {
                 context.Users.Add(user);
@@ -25,6 +26,11 @@ namespace Project_HKIII_Auction.Models
             {
                 return false;
             }
+        }
+        public User GetUser(int? UId)
+        {
+            User user = context.Users.SingleOrDefault(e=>e.UId.Equals(UId));
+            return user;
         }
     }
 }

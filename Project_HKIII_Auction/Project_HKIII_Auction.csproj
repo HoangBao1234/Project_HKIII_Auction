@@ -312,6 +312,7 @@
     <Content Include="Image\image_home\hinh anh page home\Top-10-Ranking-About-Us-Pages-760x400.png" />
     <Content Include="Image\image_login signin\b2.jpg" />
     <Content Include="Image\image_login signin\bg.png" />
+    <Content Include="Image\image_login signin\images.jpg" />
     <Content Include="js\aos.js" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap.min.js" />
@@ -457,6 +458,7 @@
     <Content Include="Views\User\CreateProduct.cshtml" />
     <Content Include="Views\Shared\User_Layout.cshtml" />
     <Content Include="Views\User\Home.cshtml" />
+    <Content Include="Views\User\Profiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
