@@ -56,7 +56,7 @@ namespace Project_HKIII_Auction.Controllers
                             userSession.UId = check.UId;
                             userSession.UName = check.UName;
                             Session.Add("userSession", userSession);
-                            return RedirectToAction("Index", "User");
+                            return RedirectToAction("Home", "User");
                         }
                         else
                         {
@@ -75,6 +75,5 @@ namespace Project_HKIII_Auction.Controllers
             }
             return View();
         }
-
     }
 }

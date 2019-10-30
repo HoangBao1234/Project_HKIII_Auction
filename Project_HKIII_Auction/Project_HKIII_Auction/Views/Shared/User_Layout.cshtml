@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @{ 
+        var username = (Project_HKIII_Auction.Common.UserLogin)Session["userSession"];
+        var result = "None";
+        if (username != null)
+        {
+            result = username.UName;
+        }
+    }
     <title>Online Auction</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -76,6 +84,7 @@
                       <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                       <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                       <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                      <li class="nav-item"><a href="contact.html" class="nav-link">@result</a></li>
                       <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
                   </ul>
