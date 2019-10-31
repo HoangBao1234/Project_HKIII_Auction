@@ -4,7 +4,11 @@
     Layout = "~/Views/Shared/User_Layout.cshtml";
 }
 
-
+<script>
+    function hien() {
+        document.getElementById("hihi").style.display = 'block';
+    }
+</script>
 
 <style>
 
@@ -114,6 +118,23 @@
                 background: #F1F3FA;
                 min-height: 460px;
             }
+            .col-sm-8 input{
+                width:500px;
+                border-radius:5px;
+                padding:5px;
+                border:none;
+            }
+            .col-sm-8 input[type=submit]{
+                width:110px;
+                padding:5px;
+                margin-top:20px;
+                background-color:limegreen;
+                border:none;
+            }
+            .col-sm-8 input[type=submit]:hover{
+                background-color:forestgreen;
+                cursor:pointer;
+            }
 </style>
 
 <div class="container">
@@ -149,13 +170,19 @@
                         <li class="">
                             <a href="~/Test/Duy">
                                 <i class="glyphicon glyphicon-home"></i>
-                                Overview
+                                Address: @Model.Address
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="glyphicon glyphicon-user"></i>
-                                Account Settings
+                                Phone: @Model.Phone
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="hien()">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Account Setting
                             </a>
                         </li>
                     </ul>
@@ -164,29 +191,65 @@
             </div>
 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9" id="hihi" style="display:none">
             <div class="profile-content">
-                <div>
-                    <b>
-                        <div class="profile-usertitle-name">
-                            <h5>User Address:  @Model.Address</h5>
+                @using (Html.BeginForm("Profiles", "User", FormMethod.Post))
+                {
+                    Html.AntiForgeryToken();
+                    Html.ValidationSummary();
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(e => e.UId)
                         </div>
-                    </b>
-                </div>
-                <div>
-                    <b>
-                        <div class="profile-usertitle-name">
-                            <h5>User Password:  @Model.Password</h5>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(e => Model.UId)
                         </div>
-                    </b>
-                </div>
-                <div>
-                    <b>
-                        <div class="profile-usertitle-name">
-                            <h5>User Phone:  @Model.Phone</h5>
+                    </div>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(e => e.UName)
                         </div>
-                    </b>
-                </div>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(e => Model.UName)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(e => e.Image)
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(e => Model.Image)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(e => e.Address)
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(e => Model.Address)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(e => e.Phone)
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(e => Model.Phone)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-sm-4">
+                            @Html.LabelFor(e => e.Password)
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(e => Model.Password, new { @type = "text" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8"> <input type="submit" value="Save" /></div>
+                    </div>
+                }
 
             </div>
         </div>

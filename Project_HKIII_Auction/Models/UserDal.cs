@@ -32,5 +32,10 @@ namespace Project_HKIII_Auction.Models
             User user = context.Users.SingleOrDefault(e=>e.UId == UId);
             return user;
         }
+        public bool Update(User user)
+        {
+            context.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            return context.SaveChanges() > 0;
+        }
     }
 }

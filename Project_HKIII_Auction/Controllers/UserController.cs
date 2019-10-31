@@ -72,5 +72,19 @@ namespace Project_HKIII_Auction.Controllers
             User user = UDal.GetUser(UId); 
             return View(user);
         }
+        [HttpPost]
+        public ActionResult Profiles(User user)
+        {
+          
+            if (ModelState.IsValid)
+            {
+                UDal.Update(user);
+                return RedirectToAction("Profiles", user);
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }

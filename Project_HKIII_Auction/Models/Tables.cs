@@ -17,7 +17,6 @@ namespace Project_HKIII_Auction.Models
         public string UName { set; get; }
 
         [Required]
-        [DataType(DataType.Password)]
         [StringLength(20), MinLength(3)]
         public string Password { set; get; }
 
