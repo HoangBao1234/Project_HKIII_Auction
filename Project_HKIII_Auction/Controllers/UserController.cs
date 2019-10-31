@@ -67,7 +67,7 @@ namespace Project_HKIII_Auction.Controllers
             var convert = (object)JsonConvert.SerializeObject(list);
             return View(convert);
         }
-        public ActionResult Profiles(int? UId)
+        public ActionResult Profiles(int UId)
         {
             User user = UDal.GetUser(UId); 
             return View(user);

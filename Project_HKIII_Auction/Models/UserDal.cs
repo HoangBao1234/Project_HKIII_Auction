@@ -27,9 +27,9 @@ namespace Project_HKIII_Auction.Models
                 return false;
             }
         }
-        public User GetUser(int? UId)
+        public User GetUser(int UId)
         {
-            User user = context.Users.SingleOrDefault(e=>e.UId.Equals(UId));
+            User user = context.Users.SingleOrDefault(e=>e.UId == UId);
             return user;
         }
     }
