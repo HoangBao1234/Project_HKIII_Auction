@@ -40,7 +40,7 @@ namespace Project_HKIII_Auction.Controllers
             {
                 if (dal.Create(user))
                 {
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Home", "User");
                 }
                 else
                 {
