@@ -35,7 +35,7 @@
 
     <link rel="stylesheet" href="~/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="~/css/jquery.timepicker.css">
-
+    <link rel="stylesheet" href="~/Content/User.css">
 
     <link rel="stylesheet" href="~/css/flaticon.css">
     <link rel="stylesheet" href="~/css/icomoon.css">
@@ -57,7 +57,7 @@
                           <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                           <div class="dropdown-menu" aria-labelledby="dropdown04">
                               @{
-                                  string sCon = "server=.;database=Project_HKIII_Auction;user=sa;password=bao@091000";
+                                  string sCon = "server=.\SQLEXPRESS;database=Project_HKIII_Auction;user=sa;password=123456789";
                                   SqlConnection conn = new SqlConnection(sCon);
                                   string query = "Select * from Categories";
                                   SqlCommand command = new SqlCommand(query, conn);
