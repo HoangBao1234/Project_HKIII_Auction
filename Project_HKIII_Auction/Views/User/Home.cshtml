@@ -6,6 +6,7 @@
 }
 @using Newtonsoft.Json;
 @using System.Data.SqlClient;
+@using System.Configuration;;
 @{
     var result = JsonConvert.DeserializeObject<dynamic>((string)Model);
 }
@@ -203,7 +204,7 @@
                 var t = date2 - date1;
                 if (t.Seconds < 0)
                 {
-                    string sCon = "server=.;database=Project_HKIII_Auction;user=sa;password=bao@091000";
+                    string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
                     SqlConnection conn = new SqlConnection(sCon);
                     string query = "Update Products Set Status = 'Over Time' Where PId = " + i.PId;
                     conn.Open();

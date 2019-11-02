@@ -12,6 +12,7 @@
     }
     @using System.Data;
     @using System.Data.SqlClient;
+    @using System.Configuration
     <title>@ViewBag.Title</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -57,7 +58,7 @@
                           <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                           <div class="dropdown-menu" aria-labelledby="dropdown04">
                               @{
-                                  string sCon = "server=.\SQLEXPRESS;database=Project_HKIII_Auction;user=sa;password=123456789";
+                                  string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
                                   SqlConnection conn = new SqlConnection(sCon);
                                   string query = "Select * from Categories";
                                   SqlCommand command = new SqlCommand(query, conn);
