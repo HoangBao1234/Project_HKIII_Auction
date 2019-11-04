@@ -6,9 +6,29 @@
 }
 @using Newtonsoft.Json;
 @using System.Data.SqlClient;
+@using System.Configuration;;
 @{
     var result = JsonConvert.DeserializeObject<dynamic>((string)Model);
 }
+
+<div class="preloader">
+    <div class="counter">0</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    function counter() {
+        var count = setInterval(function () {
+            var c = parseInt($('.counter').text());
+            $('.counter').text((++c).toString());
+            if (c == 100) {
+                clearInterval(count);
+                $('.counter').addClass('hide')
+                $('.preloader').addClass('active')
+            }
+        }, 50)
+    }
+    counter()
+</script>
 <script>
 
     function startTick(id, second, minute, hour, day) {
@@ -184,7 +204,11 @@
                 var t = date2 - date1;
                 if (t.Seconds < 0)
                 {
+<<<<<<< HEAD
                     string sCon = "server=.;database=Project_HKIII_Auction;user=sa;password=123456789";
+=======
+                    string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+>>>>>>> 5831df6a7a4607d0bd9ca2d833cbe82ee1adeb40
                     SqlConnection conn = new SqlConnection(sCon);
                     string query = "Update Products Set Status = 'Over Time' Where PId = " + i.PId;
                     conn.Open();

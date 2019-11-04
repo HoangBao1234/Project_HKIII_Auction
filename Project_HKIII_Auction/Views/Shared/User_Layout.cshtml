@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @{ 
+    @{
         var username = (Project_HKIII_Auction.Common.UserLogin)Session["userSession"];
         var result = "None";
         if (username != null)
@@ -10,7 +10,10 @@
             result = username.UName;
         }
     }
-    <title>Online Auction</title>
+    @using System.Data;
+    @using System.Data.SqlClient;
+    @using System.Configuration
+    <title>@ViewBag.Title</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -33,7 +36,7 @@
 
     <link rel="stylesheet" href="~/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="~/css/jquery.timepicker.css">
-
+    <link rel="stylesheet" href="~/Content/User.css">
 
     <link rel="stylesheet" href="~/css/flaticon.css">
     <link rel="stylesheet" href="~/css/icomoon.css">
@@ -52,18 +55,26 @@
                   <ul class="navbar-nav ml-auto">
                       <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                           <div class="dropdown-menu" aria-labelledby="dropdown04">
-                              <a class="dropdown-item" href="/User/Profiles?UId=@username.UId">hihi</a>
-                              <a class="dropdown-item" href="wishlist.html">Wishlist</a>
-                              <a class="dropdown-item" href="product-single.html">Single Product</a>
-                              <a class="dropdown-item" href="cart.html">Cart</a>
-                              <a class="dropdown-item" href="checkout.html">Checkout</a>
+                              @{
+                                  string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+                                  SqlConnection conn = new SqlConnection(sCon);
+                                  string query = "Select * from Categories";
+                                  SqlCommand command = new SqlCommand(query, conn);
+                                  conn.Open();
+
+                                  SqlDataReader read = command.ExecuteReader();
+                                  while (read.Read())
+                                  {
+                                      <a class="dropdown-item" href="#">@read[1]</a>
+                                  }
+                              }
                           </div>
                       </li>
                       <li class="nav-item"><a href="~/User/AboutUs" class="nav-link">About</a></li>
                       <li class="nav-item"><a href="~/User/ContactUs" class="nav-link">Contact</a></li>
-                      <li class="nav-item"><a href="#" class="nav-link">@result</a></li>
+                      <li class="nav-item"><a href="/User/Profiles?UId=@username.UId" class="nav-link">@result</a></li>
                       <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
                       <li class="nav-item"><a href="/Login/CheckLogout" class="nav-link">Logout</a></li>
                   </ul>
@@ -91,7 +102,7 @@
                           <p>Convenient and easy, the opportunity to receive valuable items or items that are desired in life</p>
                           <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                               <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                              <li class="ftco-animate"><a href="https://www.facebook.com/nguyen.giahuy.9279"><span class="icon-facebook"></span></a></li>
                               <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
                           </ul>
                       </div>
