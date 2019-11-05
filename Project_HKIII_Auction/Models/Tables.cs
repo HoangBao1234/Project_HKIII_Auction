@@ -47,7 +47,7 @@ namespace Project_HKIII_Auction.Models
         [Display(Name = "Name")]
         public string PName { set; get; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Date Start")]
         public DateTime DateStart { set; get; }
 
@@ -66,6 +66,7 @@ namespace Project_HKIII_Auction.Models
 
         [Required]
         [StringLength(300), MinLength(2)]
+        [DataType(DataType.MultilineText)]
         public string Description { set; get; }
 
         [Required]

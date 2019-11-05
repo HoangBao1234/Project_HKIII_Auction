@@ -35,19 +35,25 @@ namespace Project_HKIII_Auction.Controllers
         }
         public ActionResult CreateProduct()
         {
-            ViewBag.UId = Session["userSession"];
+            ViewBag.Start = DateTime.Now;
+            ViewBag.Start = String.Format("{0:dd/MM/yyyy}", ViewBag.Start);
             ViewBag.Cate = new SelectList(CDal.GetCategories(), "CId", "CName");
             return View();
         }
         [HttpPost]
         public ActionResult CreateProduct(Product product)
         {
+            ViewBag.Cate = new SelectList(CDal.GetCategories(), "CId", "CName");
+            var username = (Project_HKIII_Auction.Common.UserLogin)Session["userSession"];
+            product.UId = username.UId;
+            ViewBag.Start = DateTime.Now;
+            ViewBag.Start = String.Format("{0:dd/MM/yyyy}", ViewBag.Start);
             if (ModelState.IsValid)
             {
                 if (PDal.Create(product))
                 {
                     ModelState.Clear();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Home");
                 }
                 else
                 {
