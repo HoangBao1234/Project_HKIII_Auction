@@ -110,7 +110,7 @@
                     @Html.LabelFor(model => model.UId, htmlAttributes: new { @class = "control-label col-md-2" })
                 </div>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.UId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.UId, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.UId } })
                     @Html.ValidationMessageFor(model => model.UId, "", new { @class = "text-danger" })
                 </div>
             </div>

@@ -35,6 +35,7 @@ namespace Project_HKIII_Auction.Controllers
         }
         public ActionResult CreateProduct()
         {
+            ViewBag.UId = Session["userSession"];
             ViewBag.Cate = new SelectList(CDal.GetCategories(), "CId", "CName");
             return View();
         }
