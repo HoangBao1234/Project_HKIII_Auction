@@ -204,11 +204,7 @@
                 var t = date2 - date1;
                 if (t.Seconds < 0)
                 {
-<<<<<<< HEAD
-                    string sCon = "server=.;database=Project_HKIII_Auction;user=sa;password=123456789";
-=======
                     string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
->>>>>>> 5831df6a7a4607d0bd9ca2d833cbe82ee1adeb40
                     SqlConnection conn = new SqlConnection(sCon);
                     string query = "Update Products Set Status = 'Over Time' Where PId = " + i.PId;
                     conn.Open();

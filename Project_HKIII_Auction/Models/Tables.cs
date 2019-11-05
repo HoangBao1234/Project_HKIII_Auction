@@ -44,19 +44,24 @@ namespace Project_HKIII_Auction.Models
 
         [Required]
         [StringLength(50), MinLength(2)]
+        [Display(Name = "Name")]
         public string PName { set; get; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "Date Start")]
         public DateTime DateStart { set; get; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "Date End")]
         public DateTime DateEnd { set; get; }
 
         [Required]
         [Range(0, 100000000)]
+        [Display(Name = "Start Price")]
         public int MinimumPrice { set; get; }
 
         [Range(0, 1000000000000)]
+        [Display(Name = "Biggest Price")]
         public Nullable<int> MaximumPrice { set; get; }
 
         [Required]
@@ -75,7 +80,7 @@ namespace Project_HKIII_Auction.Models
         public HttpPostedFileBase ImageFile { set; get; }
 
         public int UId { set; get; }
-
+        [Display(Name = "Category")]
         public int CId { set; get; }
 
         public virtual User User { set; get; }

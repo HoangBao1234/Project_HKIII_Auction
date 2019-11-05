@@ -455,10 +455,10 @@
     <Content Include="Views\User\AboutUs.cshtml" />
     <Content Include="Views\User\ContactUs.cshtml" />
     <Content Include="Views\User\Tivi.cshtml" />
-    <Content Include="Views\User\CreateProduct.cshtml" />
     <Content Include="Views\Shared\User_Layout.cshtml" />
     <Content Include="Views\User\Home.cshtml" />
     <Content Include="Views\User\Profiles.cshtml" />
+    <Content Include="Views\User\CreateProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
