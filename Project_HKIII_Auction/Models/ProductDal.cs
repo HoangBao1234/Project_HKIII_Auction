@@ -25,6 +25,10 @@ namespace Project_HKIII_Auction.Models
             context.Products.Add(product);
             return context.SaveChanges() > 0;
         }
-
+        public Product GetProduct(int PId)
+        {
+           Product product= context.Products.SingleOrDefault(e => e.PId == PId);
+            return product;
+        }
     }
 }
