@@ -21,56 +21,62 @@ namespace Project_HKIII_Auction.Controllers
         [HttpPost]
         public ActionResult Check_Login(string username, string password)
         {
-            if (string.IsNullOrEmpty(username))
+            if (ModelState.IsValid)
             {
-                ViewBag.u = "Please enter Username";
-                return View("Index_Login");
-            }
-            if (string.IsNullOrEmpty(password))
-            {
-                ViewBag.UserName = username;
-                ViewBag.p = "Please enter Password";
-                return View("Index_Login");
-            }
-            else
-            {
-                User check = dal.GetUsers().SingleOrDefault(e => e.UName == username);
-                Admin admin = Adal.GetAdmins().SingleOrDefault(e => e.AName == username);
-                if (admin != null)
+                if (string.IsNullOrEmpty(username))
                 {
-                    if (admin.Password.Equals(password))
-                    {
-                        var userSession = new UserLogin();
-                        userSession.UId = admin.AId;
-                        userSession.UName = admin.AName;
-                        Session.Add("adminSeesion", userSession);
-                        return RedirectToAction("Index", "Admin");
-                    }
+                    ViewBag.u = "Please enter Username";
+                    return View("Index_Login");
                 }
-                else 
+                else
                 {
-                    if (check != null)
+                    if (string.IsNullOrEmpty(password))
                     {
-                        if (check.Password.Equals(password))
-                        {
-                            var userSession = new UserLogin();
-                            userSession.UId = check.UId;
-                            userSession.UName = check.UName;
-                            Session.Add("userSession", userSession);
-                            return RedirectToAction("Home", "User");
-                        }
-                        else
-                        {
-                            ViewBag.MsgP = "Incorrect Password";
-                            ViewBag.UserName = username;
-                            return View("Index_Login");
-                        }
+                        ViewBag.UserName = username;
+                        ViewBag.p = "Please enter Password";
+                        return View("Index_Login");
                     }
                     else
                     {
-                        ViewBag.MsgU = "Incorrect User Name";
+                        User check = dal.GetUsers().SingleOrDefault(e => e.UName == username);
+                        Admin admin = Adal.GetAdmins().SingleOrDefault(e => e.AName == username);
+                        if (admin != null)
+                        {
+                            if (admin.Password.Equals(password))
+                            {
+                                var userSession = new UserLogin();
+                                userSession.UId = admin.AId;
+                                userSession.UName = admin.AName;
+                                Session.Add("adminSeesion", userSession);
+                                return RedirectToAction("Index", "Admin");
+                            }
+                        }
+                        else
+                        {
+                            if (check != null)
+                            {
+                                if (check.Password.Equals(password))
+                                {
+                                    var userSession = new UserLogin();
+                                    userSession.UId = check.UId;
+                                    userSession.UName = check.UName;
+                                    Session.Add("userSession", userSession);
+                                    return RedirectToAction("Home", "User");
+                                }
+                                else
+                                {
+                                    ViewBag.MsgP = "Incorrect Password";
+                                    ViewBag.UserName = username;
+                                    return View("Index_Login");
+                                }
+                            }
+                            else
+                            {
+                                ViewBag.MsgU = "Incorrect User Name";
 
-                        return View("Index_Login");
+                                return View("Index_Login");
+                            }
+                        }
                     }
                 }
             }
