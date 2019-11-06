@@ -216,12 +216,12 @@
                     conn.Close();
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="product">
-                            <a href="#" class="img-prod">
+                            <a href="/User/GetProduct?PId=@i.PId" class="img-prod">
                                 <img class="img-fluid" src="@i.Image" alt="Colorlib Template">
                                 <span class="status">@i.Status</span>
                                 <div class="overlay"></div>
                             </a>
-                            <div class="text py-3 pb-4 px-3 text-center">
+                                <div class="text py-3 pb-4 px-3 text-center">
                                 <h3><a href="#">@i.PName</a></h3>
                                 <h3>
                                     <p>Seller: @i.UName</p>
@@ -235,7 +235,7 @@
                                         {
                                             <span id="time-@i.PId">
                                                 <script>
-                                        startTick(@i.PId, @t.Seconds, @t.Minutes, @t.Hours, @t.Days);
+                                                    startTick(@i.PId, @t.Seconds, @t.Minutes, @t.Hours, @t.Days);
                                                 </script>
                                             </span>
                                         }
@@ -260,20 +260,20 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
-                    </div>
+                    </div> 
                 }
                 else
                 {
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="product">
-                            <a href="#" class="img-prod">
+                            <a href="/User/GetProduct?PId=@i.PId" class="img-prod">
                                 <img class="img-fluid" src="@i.Image" alt="Colorlib Template">
                                 <span class="status">@i.Status</span>
                                 <div class="overlay"></div>
                             </a>
-                            <div class="text py-3 pb-4 px-3 text-center">
+                                <div class="text py-3 pb-4 px-3 text-center">
                                 <h3><a href="#">@i.PName</a></h3>
                                 <h3>
                                     <p>Seller: @i.UName</p>
@@ -314,9 +314,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 }
-
             }
         </div>
     </div>

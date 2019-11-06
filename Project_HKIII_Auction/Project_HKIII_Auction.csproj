@@ -219,6 +219,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ContactUs.css" />
     <Content Include="Content\Products.css" />
+    <Content Include="Content\ThongtinSP.css" />
     <Content Include="Content\User.css" />
     <Content Include="css\ajax-loader.gif" />
     <Content Include="css\animate.css" />
