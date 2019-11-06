@@ -46,6 +46,7 @@ namespace Project_HKIII_Auction.Controllers
             ViewBag.Cate = new SelectList(CDal.GetCategories(), "CId", "CName");
             var username = (Project_HKIII_Auction.Common.UserLogin)Session["userSession"];
             product.UId = username.UId;
+            product.Incremenent = 0;
             ViewBag.Start = DateTime.Now;
             ViewBag.Start = String.Format("{0:dd/MM/yyyy}", ViewBag.Start);
             if (ModelState.IsValid)
