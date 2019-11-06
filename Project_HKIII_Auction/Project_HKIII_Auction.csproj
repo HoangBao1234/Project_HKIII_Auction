@@ -460,6 +460,7 @@
     <Content Include="Views\User\Home.cshtml" />
     <Content Include="Views\User\Profiles.cshtml" />
     <Content Include="Views\User\CreateProduct.cshtml" />
+    <Content Include="Views\User\GetProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

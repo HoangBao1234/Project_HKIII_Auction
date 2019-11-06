@@ -1,0 +1,114 @@
+﻿@model Project_HKIII_Auction.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetProduct</title>
+</head>
+<body>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DateStart)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DateStart)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DateEnd)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DateEnd)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MinimumPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MinimumPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MaximumPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MaximumPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Incremenent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Incremenent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CId)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

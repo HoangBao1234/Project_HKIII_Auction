@@ -95,5 +95,10 @@ namespace Project_HKIII_Auction.Controllers
                 return View();
             }
         }
+        public ActionResult GetProduct(int PId)
+        {
+            Product product = PDal.GetProduct(PId);
+            return View(product);
+        }
     }
 }
