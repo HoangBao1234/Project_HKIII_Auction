@@ -36,6 +36,7 @@
     }
     function hien() {
         document.getElementById('hehe').style.display = 'block';
+        document.getElementById('btn').style.display = 'none';
     }
 </script>
 <link rel="stylesheet" href="~/Content/ThongtinSP.css" />
@@ -43,7 +44,8 @@
     #price input{
         padding:5px;
         border-radius:5px;
-        width:80%;
+        width:90%;
+        margin-bottom:10px;
     }
 </style>
 <main class="container" style="margin-left:15%">
@@ -108,13 +110,16 @@
             </div>
         </div>
         <div id="hehe" style="display:none">
-            @using (Html.BeginForm("User", "Auction", FormMethod.Post))
+            @using (Html.BeginForm("Auction", "User", FormMethod.Post))
             {
                 <div style="display:none">
                     @Html.TextBox("PId", new { @Value = Model.PId });
                 </div>
                 <div id="price">
-                    @Html.TextBox("Price")
+                    @Html.TextBox("Price", null, new { @placeholder = "Enter your price"})
+                </div>
+                <div>
+                    <input type="submit" class="cart-btn" style="border:none; cursor:pointer" value="Auction"/>
                 </div>
             }
         </div>
@@ -123,7 +128,7 @@
             <span>@Model.Incremenent$</span>
             @if (dis != 0)
             {
-                <button class="cart-btn" style="border:none; cursor:pointer" onclick="hien()">Auction</button>
+                <button id="btn" class="cart-btn" style="border:none; cursor:pointer" onclick="hien()">Auction</button>
             }
             else
             {

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Project_HKIII_Auction.Controllers
 {
@@ -112,7 +114,21 @@ namespace Project_HKIII_Auction.Controllers
         [HttpPost]
         public ActionResult Auction(int PId, int Price)
         {
-            return View();
+            string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+            SqlConnection conn = new SqlConnection(sCon);
+            string query = "Update Product Set Incremenent = "+Price+" Where PId = "+PId;
+            conn.Open();
+            SqlCommand command = new SqlCommand(query, conn);
+            int i = command.ExecuteNonQuery();
+            if (i > 0)
+            {
+                return RedirectToAction("Home");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
     }
 }
