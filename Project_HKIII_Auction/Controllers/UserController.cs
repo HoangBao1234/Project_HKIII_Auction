@@ -100,5 +100,19 @@ namespace Project_HKIII_Auction.Controllers
             Product product = PDal.GetProduct(PId);
             return View(product);
         }
+        public ActionResult HistoryAuction()
+        {
+            return View();
+        }
+        public ActionResult Auction(int PId)
+        {
+            Product product = PDal.GetProduct(PId);
+            return View(product);
+        }
+        [HttpPost]
+        public ActionResult Auction(int PId, int Price)
+        {
+            return View();
+        }
     }
 }
