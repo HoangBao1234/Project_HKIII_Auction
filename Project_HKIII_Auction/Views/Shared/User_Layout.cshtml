@@ -73,11 +73,22 @@
                             }
                         </div>
                     </li>
-                    <li class="nav-item"><a href="~/User/AboutUs" class="nav-link">MyProduct</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MySelf</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="/User/Profiles?UId=@username.UId">Profiles</a>
+                            <a class="dropdown-item" href="#">My Product</a>
+                            <a class="dropdown-item" href="/User/HistoryAuction">History Auction</a>
+                            <a href="/User/Profiles?UId=@username.UId" class="dropdown-item">@result</a>
+                        </div>
+                    </li>
                     <li class="nav-item"><a href="~/User/ContactUs" class="nav-link">Contact</a></li>
-                    <li class="nav-item"><a href="/User/Profiles?UId=@username.UId" class="nav-link">@result</a></li>
-                    <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">History Auction</a></li>
-                    <li class="nav-item"><a href="/Login/CheckLogout" class="nav-link">Logout</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@username.UName</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="/Login/CheckLogout">Logout</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -88,7 +99,7 @@
     </div>
     <hr>
     <footer class="ftco-footer ftco-section">
-        <div class="container">
+        <div style="padding:10%">
             <div class="row">
                 <div class="mouse">
                     <a href="#">
