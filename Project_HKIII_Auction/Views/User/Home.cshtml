@@ -52,8 +52,10 @@
                 hour = hour - 1;
             }
             if (hour == 0) {
-                hour = 24;
-                day = day - 1;
+                if (day > 0) {
+                    hour = 23;
+                    day = day - 1;
+                }
             }
         }, 1000);
     }
@@ -250,7 +252,7 @@
                                 </div>
                                 <div class="bottom-area d-flex px-3">
                                     <div class="m-auto d-flex">
-                                        <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <a href="/User/GetProduct?PId=@i.PId" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                             <span><i class="ion-ios-menu"></i></span>
                                         </a>
                                         <a href="/User/Auction?PId=@i.PId" class="buy-now d-flex justify-content-center align-items-center mx-1">
@@ -263,7 +265,8 @@
                                 </div>
                             </div> 
                         </div>
-                    </div> 
+                    </div>
+                    
             }
         </div>
     </div>

@@ -29,8 +29,10 @@
                 hour = hour - 1;
             }
             if (hour == 0) {
-                hour = 24;
-                day = day - 1;
+                if (day > 0) {
+                    hour = 23;
+                    day = day - 1;
+                }
             }
         }, 1000);
     }
