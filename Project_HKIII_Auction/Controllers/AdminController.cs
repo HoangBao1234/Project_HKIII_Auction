@@ -112,7 +112,7 @@ namespace Project_HKIII_Auction.Controllers
             var Pros = PDal.GetProducts();
             var Users = UDal.GetUsers();
 
-            var List = from U in Users join H in His on U.UId equals H.UId join P in Pros on H.PId equals P.PId select new {U.UName, P.PName, P.MinimumPrice, H.PriceAuction, H.Status };
+            var List = from U in Users join H in His on U.UId equals H.UId join P in Pros on H.PId equals P.PId select new {U.UName, P.PName, P.MinimumPrice, H.PriceAuction, H.Status, P.PId };
             var model = (object)JsonConvert.SerializeObject(List);
             return View(model);
         }
@@ -123,7 +123,7 @@ namespace Project_HKIII_Auction.Controllers
             var Pros = PDal.GetProducts();
             var Users = UDal.GetUsers();
 
-            var List = from U in Users join H in His on U.UId equals H.UId join P in Pros on H.PId equals P.PId select new { U.UName, P.PName, P.MinimumPrice, H.PriceAuction, H.Status };
+            var List = from U in Users join H in His on U.UId equals H.UId join P in Pros on H.PId equals P.PId select new { U.UName, P.PName, P.MinimumPrice, H.PriceAuction, H.Status, P.PId };
             var model = (object)JsonConvert.SerializeObject(List);
             if (string.IsNullOrEmpty(txtSearch))
             {
@@ -135,6 +135,11 @@ namespace Project_HKIII_Auction.Controllers
                 var model1 = (object)JsonConvert.SerializeObject(searched);
                 return View("HistoryAuction", model1);
             }
+        }
+        public ActionResult DetailsProduct(int PId)
+        {
+            Product product = PDal.GetProduct(PId);
+            return View(product);
         }
     }
 }

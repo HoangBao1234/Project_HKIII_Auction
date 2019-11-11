@@ -223,6 +223,20 @@
                 {
                     status = "Can Bid";
                 }
+                if (t.Days <= -3)
+                {
+                    string SCon1 = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+                    SqlConnection conn1 = new SqlConnection(SCon1);
+                    string query1 = "Delete From HistoryAuctions Where PId = "+i.PId;
+                    string query2 = "Delete From Products Where PId = "+i.PId;
+                    conn1.Open();
+                    SqlCommand command1 = new SqlCommand(query1,conn1);
+                    SqlCommand command2 = new SqlCommand(query2, conn1);
+
+                    command1.ExecuteNonQuery();
+                    command2.ExecuteNonQuery();
+                    conn1.Close();
+                }
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="product">
                             <a href="/User/GetProduct?PId=@i.PId" class="img-prod">
