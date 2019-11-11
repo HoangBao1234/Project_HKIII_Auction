@@ -207,8 +207,10 @@
                 DateTime date1 = DateTime.Now;
                 DateTime date2 = i.DateEnd;
                 var t = date2 - date1;
+                string status;
                 if (t.Seconds < 0)
                 {
+                    status = "OverTime";
                     string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
                     SqlConnection conn = new SqlConnection(sCon);
                     string query = "Update Products Set Status = 'Over Time' Where PId = " + i.PId;
@@ -217,11 +219,15 @@
                     command.ExecuteNonQuery();
                     conn.Close();
                 }
+                else
+                {
+                    status = "Can Bid";
+                }
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="product">
                             <a href="/User/GetProduct?PId=@i.PId" class="img-prod">
                                 <img class="img-fluid" src="@i.Image" alt="Colorlib Template">
-                                <span class="status">@i.Status</span>
+                                <span class="status">@status</span>
                                 <div class="overlay"></div>
                             </a>
                                 <div class="text py-3 pb-4 px-3 text-center">
