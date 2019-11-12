@@ -208,6 +208,7 @@
                 DateTime date2 = i.DateEnd;
                 var t = date2 - date1;
                 string status;
+                string date = "Can Bid";
                 if (t.Seconds < 0)
                 {
                     status = "OverTime";
@@ -218,6 +219,7 @@
                     SqlCommand command = new SqlCommand(query, conn);
                     command.ExecuteNonQuery();
                     conn.Close();
+                    date = "0 Days 00:00:00";
                 }
                 else
                 {
@@ -249,10 +251,9 @@
                                 <h3>
                                     <p>Seller: @i.UName</p>
                                     @{
-                                        if (t.Seconds < 0)
+                                        if (date == "0 Days 00:00:00")
                                         {
-                                            var strTime = "0 Days 00:00:00";
-                                            @strTime
+                                            <span>@date</span>
                                         }
                                         else
                                         {
@@ -267,7 +268,6 @@
                                 <div class="d-flex">
                                     <div class="pricing">
                                         <p class="price"><span class="mr-2 price-dc">$ @i.MinimumPrice</span><span class="price-sale">$ @i.Incremenent</span></p>
-
                                     </div>
                                 </div>
                                 <div class="bottom-area d-flex px-3">
@@ -285,8 +285,7 @@
                                 </div>
                             </div> 
                         </div>
-                    </div>
-                    
+                    </div>     
             }
         </div>
     </div>

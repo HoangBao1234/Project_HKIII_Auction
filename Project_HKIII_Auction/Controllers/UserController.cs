@@ -95,7 +95,15 @@ namespace Project_HKIII_Auction.Controllers
         }
         public ActionResult HistoryAuction()
         {
-            return View();
+            var Cate = CDal.GetCategories();
+            var Pro = PDal.GetProducts();
+            var Us = UDal.GetUsers();
+            var His = HDal.GetHistoryAuctions();
+
+            var list = from c in Cate join p in Pro on c.CId equals p.CId join u in Us on p.UId equals u.UId join h in His on u.UId equals h.UId select new {u.UName, p.PName, p.MinimumPrice, h.PriceAuction, h.Status };
+            var HisList = (object)JsonConvert.SerializeObject(list);
+
+            return View(HisList);
         }
         public ActionResult Auction(int PId)
         {
@@ -107,7 +115,7 @@ namespace Project_HKIII_Auction.Controllers
         public ActionResult Auction(int PId, int Price)
         {
             Product product = PDal.GetProduct(PId);
-            if(Price > product.MinimumPrice)
+            if (Price > product.MinimumPrice)
             {
                 if (Price > product.Incremenent)
                 {
@@ -119,6 +127,7 @@ namespace Project_HKIII_Auction.Controllers
 
                     string query = "Update Products Set Incremenent = @Price Where PId = @PId";
                     string queryHis = "Insert into HistoryAuctions Values(@PId, @UId, @Price, @Status)";
+                    string queryUpdate = "Update HistoryAuctions Set Status = @status Where PriceAuction < @Price";
 
                     conn.Open();
                     //Update Price Auction
@@ -132,7 +141,11 @@ namespace Project_HKIII_Auction.Controllers
                     command1.Parameters.Add(new SqlParameter("Price", Price));
                     command1.Parameters.Add(new SqlParameter("Status", "Waiting"));
                     command1.ExecuteNonQuery();
-
+                    //Update Status History
+                    SqlCommand command2 = new SqlCommand(queryUpdate, conn);
+                    command2.Parameters.Add(new SqlParameter("status", "There are people who bid more than you"));
+                    command2.Parameters.Add(new SqlParameter("Price", Price));
+                    command2.ExecuteNonQuery();
                     int i = command.ExecuteNonQuery();
                     conn.Close();
                     if (i > 0)
@@ -146,17 +159,15 @@ namespace Project_HKIII_Auction.Controllers
                 }
                 else
                 {
-                    ViewBag.U = "Price must be greater than original price";
-                    return View("GetProduct", product);
+                    ViewBag.U = "Price must be greater than Current price";
+                    return View("Auction", product);
                 }
             }
             else
             {
                 ViewBag.Y = "Price must be greater than original price";
-                return View("GetProduct", product);
+                return View("Auction", product);
             }
-
-            
         }
         public ActionResult MyProduct(string UName)
         {
@@ -170,7 +181,6 @@ namespace Project_HKIII_Auction.Controllers
             var MyProduct = (object)JsonConvert.SerializeObject(MyList);
 
             return View(MyProduct);
-        }
-        
+        } 
     }
 }

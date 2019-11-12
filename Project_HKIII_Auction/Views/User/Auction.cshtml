@@ -35,11 +35,13 @@
                 }
             }
         }, 1000);
-    }
-    function hien() {
-        document.getElementById('hehe').style.display = 'block';
-        document.getElementById('btn').style.display = 'none';
-    }
+    };
+</script>
+<script>
+        function hien() {
+            document.getElementById('hehe').style.display = 'block';
+            document.getElementById('btn').style.display = 'none';
+        };
 </script>
 <link rel="stylesheet" href="~/Content/ThongtinSP.css" />
 <style>
@@ -50,7 +52,7 @@
         margin-bottom:10px;
     }
 </style>
-<main class="container" style="margin-left:15%">
+<div class="container" style="margin-left:15%">
     <!-- Left Column / Headphones Image -->
     <div style="margin-right:10%; margin-top:5%">
         <img src="@Model.Image" alt="" width="450" height="400">
@@ -118,16 +120,16 @@
                     @Html.TextBox("PId", new { @Value = Model.PId });
                 </div>
                 <div id="price">
-                    @Html.TextBox("Price", null, new { @placeholder = "Enter your price"})
+                    @Html.TextBox("Price", null, new { @placeholder = "Enter your price" })
                 </div>
                 <div>
-                    <input type="submit" class="cart-btn" style="border:none; cursor:pointer" value="Auction"/>
+                    <input type="submit" class="cart-btn" style="border:none; cursor:pointer" value="Auction" />
                 </div>
             }
         </div>
         <!-- Product Pricing -->
         <div class="product-price">
-            <span>@Model.Incremenent$</span>
+            <span>Current price: @Model.Incremenent$</span>
             @if (dis != 0)
             {
                 <button id="btn" class="cart-btn" style="border:none; cursor:pointer" onclick="hien()">Auction</button>
@@ -137,5 +139,7 @@
                 <button class="cart-btn" style="border:none; cursor:no-drop" disabled>Auction</button>
             }
         </div>
+        <span style="color:red">@ViewBag.U</span>
+        <span style="color:red">@ViewBag.Y</span>
     </div>
-</main>
+</div>

@@ -3,10 +3,11 @@
     ViewBag.Title = "HistoryAuction";
     Layout = "~/Views/Shared/User_Layout.cshtml";
 }
-
-<h2>HistoryAuction</h2>
+@using Newtonsoft.Json;
+@{ 
+    var result = JsonConvert.DeserializeObject<dynamic>((string)Model);
+}
 <table class="table">
-    <thead>
         <tr>
             <th class="border-0 text-uppercase small font-weight-bold">Product</th>
             <th class="border-0 text-uppercase small font-weight-bold">Date Auction</th>
@@ -15,8 +16,15 @@
             <th class="border-0 text-uppercase small font-weight-bold">Posted by</th>
             <th class="border-0 text-uppercase small font-weight-bold">Status</th>
         </tr>
-    </thead>
-    <tbody>
-    </tbody>
+        @foreach (var i in result)
+        {
+            <tr>
+                <td>@i.UName</td>
+                <td>@i.PName</td>
+                <td>@i.MinimumPrice</td>
+                <td>@i.PriceAuction</td>
+                <td>@i.Status</td>
+            </tr>
+        }
 </table>
 
