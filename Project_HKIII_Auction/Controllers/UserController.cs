@@ -95,13 +95,14 @@ namespace Project_HKIII_Auction.Controllers
         }
         public ActionResult HistoryAuction()
         {
-            var Cate = CDal.GetCategories();
             var Pro = PDal.GetProducts();
             var Us = UDal.GetUsers();
             var His = HDal.GetHistoryAuctions();
+            var user = (Project_HKIII_Auction.Common.UserLogin)Session["userSession"];
 
-            var list = from c in Cate join p in Pro on c.CId equals p.CId join u in Us on p.UId equals u.UId join h in His on u.UId equals h.UId select new {u.UName, p.PName, p.MinimumPrice, h.PriceAuction, h.Status };
-            var HisList = (object)JsonConvert.SerializeObject(list);
+            var list = from u in Us join h in His on u.UId equals h.UId join p in Pro on h.PId equals p.PId select new{u.UName ,p.PName, h.DateBid, h.PriceAuction, h.Status, p.DateEnd, p.PId };
+            var lists = list.Where(e => e.UName.Equals(user.UName));
+            var HisList = (object)JsonConvert.SerializeObject(lists);
 
             return View(HisList);
         }
@@ -126,7 +127,7 @@ namespace Project_HKIII_Auction.Controllers
 
 
                     string query = "Update Products Set Incremenent = @Price Where PId = @PId";
-                    string queryHis = "Insert into HistoryAuctions Values(@PId, @UId, @Price, @Status)";
+                    string queryHis = "Insert into HistoryAuctions Values(@PId, @UId, @Price, @Status, @DateBid)";
                     string queryUpdate = "Update HistoryAuctions Set Status = @status Where PriceAuction < @Price";
 
                     conn.Open();
@@ -140,6 +141,7 @@ namespace Project_HKIII_Auction.Controllers
                     command1.Parameters.Add(new SqlParameter("UId", user.UId));
                     command1.Parameters.Add(new SqlParameter("Price", Price));
                     command1.Parameters.Add(new SqlParameter("Status", "Waiting"));
+                    command1.Parameters.Add(new SqlParameter("DateBid", DateTime.Now));
                     command1.ExecuteNonQuery();
                     //Update Status History
                     SqlCommand command2 = new SqlCommand(queryUpdate, conn);

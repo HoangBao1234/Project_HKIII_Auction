@@ -50,7 +50,7 @@
 
         <!-- Product Description -->
         <div class="product-description">
-            <span>Headphones</span>
+            <span>Product Name</span>
             <h1>@Model.PName</h1>
             <p>Description: @Model.Description</p>
         </div>
@@ -103,15 +103,7 @@
 
         <!-- Product Pricing -->
         <div class="product-price">
-            <span>@Model.Incremenent$</span>
-            @if (dis != 0)
-            {
-                <button class="cart-btn" style="border:none; cursor:pointer">Auction</button>
-            }
-            else
-            {
-                <button class="cart-btn" style="border:none; cursor:no-drop" disabled>Auction</button>
-            }
+            <span>Current Price: @Model.Incremenent$</span>
         </div>
     </div>
 </div>

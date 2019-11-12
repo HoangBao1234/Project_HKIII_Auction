@@ -7,21 +7,20 @@
 @{ 
     var result = JsonConvert.DeserializeObject<dynamic>((string)Model);
 }
-<table class="table">
+<table class="table" style="margin-top:50px; color:black">
         <tr>
-            <th class="border-0 text-uppercase small font-weight-bold">Product</th>
-            <th class="border-0 text-uppercase small font-weight-bold">Date Auction</th>
+            <th class="border-0 text-uppercase small font-weight-bold">Product Name</th>
+            <th class="border-0 text-uppercase small font-weight-bold">Date Bid</th>
             <th class="border-0 text-uppercase small font-weight-bold">Date End</th>
             <th class="border-0 text-uppercase small font-weight-bold">Price Auction</th>
-            <th class="border-0 text-uppercase small font-weight-bold">Posted by</th>
             <th class="border-0 text-uppercase small font-weight-bold">Status</th>
         </tr>
         @foreach (var i in result)
         {
             <tr>
-                <td>@i.UName</td>
-                <td>@i.PName</td>
-                <td>@i.MinimumPrice</td>
+                <td><a href="/User/Auction?PId=@i.PId">@i.PName</a></td>
+                <td>@i.DateBid</td>
+                <td>@i.DateEnd</td>
                 <td>@i.PriceAuction</td>
                 <td>@i.Status</td>
             </tr>

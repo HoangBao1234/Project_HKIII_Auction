@@ -115,6 +115,7 @@ namespace Project_HKIII_Auction.Models
         public int UId { set; get; }
         public int PriceAuction { set; get; }
         public string Status { set; get; }
+        public DateTime DateBid { set; get; }
 
         public virtual Product Product { set; get; }
     }
