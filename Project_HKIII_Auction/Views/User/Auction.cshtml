@@ -29,8 +29,10 @@
                 hour = hour - 1;
             }
             if (hour == 0) {
-                hour = 24;
-                day = day - 1;
+                if (day > 0) {
+                    hour = 24;
+                    day = day - 1;
+                }
             }
         }, 1000);
     }
@@ -51,7 +53,7 @@
 <main class="container" style="margin-left:15%">
     <!-- Left Column / Headphones Image -->
     <div style="margin-right:10%; margin-top:5%">
-        <img src="@Model.Image" alt="" width="450px" height="400px">
+        <img src="@Model.Image" alt="" width="450" height="400">
     </div>
 
 

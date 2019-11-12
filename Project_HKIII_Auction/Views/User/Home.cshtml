@@ -52,8 +52,10 @@
                 hour = hour - 1;
             }
             if (hour == 0) {
-                hour = 24;
-                day = day - 1;
+                if (day > 0) {
+                    hour = 23;
+                    day = day - 1;
+                }
             }
         }, 1000);
     }
@@ -205,8 +207,10 @@
                 DateTime date1 = DateTime.Now;
                 DateTime date2 = i.DateEnd;
                 var t = date2 - date1;
+                string status;
                 if (t.Seconds < 0)
                 {
+                    status = "OverTime";
                     string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
                     SqlConnection conn = new SqlConnection(sCon);
                     string query = "Update Products Set Status = 'Over Time' Where PId = " + i.PId;
@@ -215,11 +219,29 @@
                     command.ExecuteNonQuery();
                     conn.Close();
                 }
+                else
+                {
+                    status = "Can Bid";
+                }
+                if (t.Days <= -3)
+                {
+                    string SCon1 = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+                    SqlConnection conn1 = new SqlConnection(SCon1);
+                    string query1 = "Delete From HistoryAuctions Where PId = "+i.PId;
+                    string query2 = "Delete From Products Where PId = "+i.PId;
+                    conn1.Open();
+                    SqlCommand command1 = new SqlCommand(query1,conn1);
+                    SqlCommand command2 = new SqlCommand(query2, conn1);
+
+                    command1.ExecuteNonQuery();
+                    command2.ExecuteNonQuery();
+                    conn1.Close();
+                }
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="product">
                             <a href="/User/GetProduct?PId=@i.PId" class="img-prod">
                                 <img class="img-fluid" src="@i.Image" alt="Colorlib Template">
-                                <span class="status">@i.Status</span>
+                                <span class="status">@status</span>
                                 <div class="overlay"></div>
                             </a>
                                 <div class="text py-3 pb-4 px-3 text-center">
@@ -250,7 +272,7 @@
                                 </div>
                                 <div class="bottom-area d-flex px-3">
                                     <div class="m-auto d-flex">
-                                        <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <a href="/User/GetProduct?PId=@i.PId" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                             <span><i class="ion-ios-menu"></i></span>
                                         </a>
                                         <a href="/User/Auction?PId=@i.PId" class="buy-now d-flex justify-content-center align-items-center mx-1">
@@ -263,7 +285,8 @@
                                 </div>
                             </div> 
                         </div>
-                    </div> 
+                    </div>
+                    
             }
         </div>
     </div>
