@@ -116,7 +116,7 @@ namespace Project_HKIII_Auction.Controllers
         {
             string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
             SqlConnection conn = new SqlConnection(sCon);
-            string query = "Update Product Set Incremenent = "+Price+" Where PId = "+PId;
+            string query = "Update Products Set Incremenent = "+Price+" Where PId = "+PId;
             conn.Open();
             SqlCommand command = new SqlCommand(query, conn);
             int i = command.ExecuteNonQuery();
