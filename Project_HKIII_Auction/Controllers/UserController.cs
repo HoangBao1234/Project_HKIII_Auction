@@ -99,40 +99,64 @@ namespace Project_HKIII_Auction.Controllers
         }
         public ActionResult Auction(int PId)
         {
+           
             Product product = PDal.GetProduct(PId);
             return View(product);
         }
         [HttpPost]
         public ActionResult Auction(int PId, int Price)
         {
-            var user = (Project_HKIII_Auction.Common.UserLogin)Session["userSession"];
-            string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
-            SqlConnection conn = new SqlConnection(sCon);
-            string query = "Update Products Set Incremenent = @Price Where PId = @PId";
-            string queryHis = "Insert into HistoryAuctions Values(@PId, @UId, @Price, @Status)";
-            conn.Open();
-            //Update Price Auction
-            SqlCommand command = new SqlCommand(query, conn);
-            command.Parameters.Add(new SqlParameter("Price", Price));
-            command.Parameters.Add(new SqlParameter("PId", PId));
-            //Add History Auction
-            SqlCommand command1 = new SqlCommand(queryHis, conn);
-            command1.Parameters.Add(new SqlParameter("PId", PId));
-            command1.Parameters.Add(new SqlParameter("UId", user.UId));
-            command1.Parameters.Add(new SqlParameter("Price", Price));
-            command1.Parameters.Add(new SqlParameter("Status", "Waiting"));
-            command1.ExecuteNonQuery();
-            
-            int i = command.ExecuteNonQuery();
-            conn.Close();
-            if (i > 0)
+            Product product = PDal.GetProduct(PId);
+            if(Price > product.MinimumPrice)
             {
-                return RedirectToAction("Home");
+                if (Price > product.Incremenent)
+                {
+                    var user = (Project_HKIII_Auction.Common.UserLogin)Session["userSession"];
+                    string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+                    SqlConnection conn = new SqlConnection(sCon);
+
+
+
+                    string query = "Update Products Set Incremenent = @Price Where PId = @PId";
+                    string queryHis = "Insert into HistoryAuctions Values(@PId, @UId, @Price, @Status)";
+
+                    conn.Open();
+                    //Update Price Auction
+                    SqlCommand command = new SqlCommand(query, conn);
+                    command.Parameters.Add(new SqlParameter("Price", Price));
+                    command.Parameters.Add(new SqlParameter("PId", PId));
+                    //Add History Auction
+                    SqlCommand command1 = new SqlCommand(queryHis, conn);
+                    command1.Parameters.Add(new SqlParameter("PId", PId));
+                    command1.Parameters.Add(new SqlParameter("UId", user.UId));
+                    command1.Parameters.Add(new SqlParameter("Price", Price));
+                    command1.Parameters.Add(new SqlParameter("Status", "Waiting"));
+                    command1.ExecuteNonQuery();
+
+                    int i = command.ExecuteNonQuery();
+                    conn.Close();
+                    if (i > 0)
+                    {
+                        return RedirectToAction("Home");
+                    }
+                    else
+                    {
+                        return View();
+                    }
+                }
+                else
+                {
+                    ViewBag.U = "Price must be greater than original price";
+                    return View("GetProduct", product);
+                }
             }
             else
             {
-                return View();
+                ViewBag.Y = "Price must be greater than original price";
+                return View("GetProduct", product);
             }
+
+            
         }
         public ActionResult MyProduct(string UName)
         {
@@ -147,5 +171,6 @@ namespace Project_HKIII_Auction.Controllers
 
             return View(MyProduct);
         }
+        
     }
 }

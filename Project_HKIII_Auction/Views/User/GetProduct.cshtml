@@ -65,7 +65,7 @@
                 <div class="color-choose">
                     <div>
                         <label>Start Price: @Model.MinimumPrice</label>
-                        
+
                     </div>
                     </br>
                     <div>
@@ -83,7 +83,7 @@
                 <div class="cable-choose">
                     @if (date.Seconds < 0)
                     {
-                         msg = "Over Time";
+                        msg = "Over Time";
                         <span>@msg</span>
                     }
                     else
@@ -94,6 +94,7 @@
                                 startTick(@date.Seconds, @date.Minutes, @date.Hours, @date.Days)
                             </script>
                         </span>
+
                     }
                 </div>
 
@@ -112,5 +113,7 @@
                 <button class="cart-btn" style="border:none; cursor:no-drop" disabled>Auction</button>
             }
         </div>
+        <span style="color:red">@ViewBag.U</span>
+        <span style="color:red">@ViewBag.Y</span>
     </div>
 </div>
