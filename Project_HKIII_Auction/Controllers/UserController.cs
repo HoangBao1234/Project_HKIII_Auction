@@ -17,6 +17,7 @@ namespace Project_HKIII_Auction.Controllers
         UserDal UDal = new UserDal();
         CategoryDal CDal = new CategoryDal();
         HistoryDal HDal = new HistoryDal();
+        NotificationDal NDal = new NotificationDal();
         Context context = new Context();
         public ActionResult AboutUs()
         {
@@ -29,7 +30,7 @@ namespace Project_HKIII_Auction.Controllers
         public ActionResult CreateProduct()
         {
             ViewBag.Start = DateTime.Now;
-            ViewBag.Start = String.Format("{0:dd/MM/yyyy}", ViewBag.Start);
+            ViewBag.Start = String.Format("{0:MM/dd/yyyy}", ViewBag.Start);
             ViewBag.Cate = new SelectList(CDal.GetCategories(), "CId", "CName");
             return View();
         }
@@ -183,6 +184,17 @@ namespace Project_HKIII_Auction.Controllers
             var MyProduct = (object)JsonConvert.SerializeObject(MyList);
 
             return View(MyProduct);
-        } 
+        }
+        public ActionResult Notification(int UId)
+        {
+            var U = UDal.GetUsers();
+            var P = PDal.GetProducts();
+            var N = NDal.GetNotifications();
+
+            var list = from u in U join n in N on u.UId equals n.UId join p in P on n.PId equals p.PId select new {u.UId, p.PName, p.Incremenent, n.Status };
+            var lists = list.Where(e=>e.UId.Equals(UId));
+            var NList = (object)JsonConvert.SerializeObject(lists);
+            return View(NList);
+        }
     }
 }

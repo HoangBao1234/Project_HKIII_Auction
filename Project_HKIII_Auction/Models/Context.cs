@@ -14,5 +14,6 @@ namespace Project_HKIII_Auction.Models
         public DbSet<Product> Products { set; get; }
         public DbSet<Category> Categories { set; get; }
         public DbSet<HistoryAuction> HistoryAuctions { set; get; }
+        public DbSet<Notification> Notifications { set; get; }
     }
 }

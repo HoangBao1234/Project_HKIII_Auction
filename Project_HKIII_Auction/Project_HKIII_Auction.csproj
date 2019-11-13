@@ -146,6 +146,7 @@
     <Compile Include="Models\CategoryDal.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\HistoryDal.cs" />
+    <Compile Include="Models\NotificationDal.cs" />
     <Compile Include="Models\ProductDal.cs" />
     <Compile Include="Models\Tables.cs" />
     <Compile Include="Models\UserDal.cs" />
@@ -463,6 +464,7 @@
     <Content Include="Views\User\Auction.cshtml" />
     <Content Include="Views\User\MyProduct.cshtml" />
     <Content Include="Views\Admin\DetailsProduct.cshtml" />
+    <Content Include="Views\User\Notification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
