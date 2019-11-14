@@ -214,21 +214,13 @@
                     status = "OverTime";
                     string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
                     SqlConnection conn = new SqlConnection(sCon);
-                    string query1 = "Select UId, PId From HistoryAuctions Where Status = 'Waiting'";
                     string query = "Update Products Set Status = 'Over Time' Where PId = " + i.PId;
-                    string query2 = "Insert into Notifications Values(@UId, @PId, @Status)";
+                    string query1 = "Update HistoryAuctions Set Status = 'Winner' Where Status = 'Waiting'";
                     conn.Open();
-
                     SqlCommand command = new SqlCommand(query, conn);
                     SqlCommand command1 = new SqlCommand(query1, conn);
-                    SqlDataReader reader = command1.ExecuteReader();
-                    SqlCommand command2 = new SqlCommand(query2, conn);
-
-                    command2.Parameters.Add(new SqlParameter("UId", (int)reader[0]));
-                    command2.Parameters.Add(new SqlParameter("PId", (int)reader[1]));
-                    command2.Parameters.Add(new SqlParameter("Status", "Winner"));
-
                     command.ExecuteNonQuery();
+                    command1.ExecuteNonQuery();
                     conn.Close();
                     date = "0 Days 00:00:00";
                 }
