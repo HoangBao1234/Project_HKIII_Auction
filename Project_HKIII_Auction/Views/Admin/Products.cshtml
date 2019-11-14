@@ -19,32 +19,35 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th> Product ID </th>
+                                <th> Posted By </th>
                                 <th> Product Name </th>
-                                <th> Date Start </th>
-                                <th> Date End </th>
+                                <th> Time remaining </th>
                                 <th> Minimun Price </th>
                                 <th> Maximun Price </th>
-                                <th> Description </th>
                                 <th> Status </th>
                                 <th> Incremenent </th>
-                                <th> Image </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var i in Model)
                             {
+                                DateTime date1 = DateTime.Now;
+                                DateTime date2 = i.DateEnd;
+                                var t = date2 - date1;
                                 <tr>
-                                    <td>@i.PId</td>
+                                    <td>@i.User.UName</td>
                                     <td>@i.PName</td>
-                                    <td>@i.DateStart</td>
-                                    <td>@i.DateEnd</td>
+                                    @if (t.Seconds > 0) {
+                                    <td>@t.Days Days @t.Hours Hours @t.Minutes Minutes @t.Seconds Seconds</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Over Time</td>
+                                    }
                                     <td>@i.MinimumPrice</td>
                                     <td>@i.MaximumPrice</td>
-                                    <td>@i.Description</td>
                                     <td>@i.Status</td>
                                     <td>@i.Incremenent</td>
-                                    <td>@i.Image</td>
                                 </tr>
                             }
                         </tbody>

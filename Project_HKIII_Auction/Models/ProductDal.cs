@@ -30,5 +30,19 @@ namespace Project_HKIII_Auction.Models
            Product product= context.Products.SingleOrDefault(e => e.PId == PId);
             return product;
         }
+        public bool Delete(int PId)
+        {
+            Product product = context.Products.SingleOrDefault(e=>e.PId.Equals(PId));
+            if (product!=null)
+            {
+                context.Products.Remove(product);
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

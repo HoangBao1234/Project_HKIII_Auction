@@ -2,8 +2,10 @@
 using Project_HKIII_Auction.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace Project_HKIII_Auction.Controllers
@@ -27,7 +29,7 @@ namespace Project_HKIII_Auction.Controllers
             var Pros = PDal.GetProducts();
             var Users = UDal.GetUsers();
 
-            var List = from C in Cates join P in Pros on C.CId equals P.CId join U in Users on P.UId equals U.UId select new {U.UName, P.PName, C.CName, P.MinimumPrice, P.DateStart, P.DateEnd };
+            var List = from C in Cates join P in Pros on C.CId equals P.CId join U in Users on P.UId equals U.UId select new {U.UName, P.PName, C.CName, P.MinimumPrice, P.DateStart, P.DateEnd, P.PId };
             var PList = (object)JsonConvert.SerializeObject(List);
             return View(PList);
         }
@@ -112,7 +114,7 @@ namespace Project_HKIII_Auction.Controllers
             var Pros = PDal.GetProducts();
             var Users = UDal.GetUsers();
 
-            var List = from U in Users join H in His on U.UId equals H.UId join P in Pros on H.PId equals P.PId select new {U.UName, P.PName, P.MinimumPrice, H.PriceAuction, H.Status, P.PId };
+            var List = from U in Users join H in His on U.UId equals H.UId join P in Pros on H.PId equals P.PId select new {U.UName, P.PName, P.MinimumPrice, H.PriceAuction, H.Status, P.PId, H.DateBid };
             var model = (object)JsonConvert.SerializeObject(List);
             return View(model);
         }
@@ -140,6 +142,76 @@ namespace Project_HKIII_Auction.Controllers
         {
             Product product = PDal.GetProduct(PId);
             return View(product);
+        }
+        public ActionResult DeleteProduct(int PId)
+        {
+            string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+            string query = "Delete From HistoryAuctions Where PId = "+PId;
+            SqlConnection conn = new SqlConnection(sCon);
+            SqlCommand command = new SqlCommand(query, conn);
+            conn.Open();
+            command.ExecuteNonQuery();
+            conn.Close();
+            if (PDal.Delete(PId))
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public ActionResult DetailsUser(int UId)
+        {
+            User user =  UDal.GetUser(UId);
+            return View(user);
+        }
+        public ActionResult DeleteUser(int UId)
+        {
+            string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+            SqlConnection conn = new SqlConnection(sCon);
+            conn.Open();
+            string query = "Select PId from Products Where UId = " + UId;
+            SqlCommand command1 = new SqlCommand(query, conn);
+            SqlDataReader reader = command1.ExecuteReader();
+            while (reader.Read())
+            {
+                string deHis = "Delete From HistoryAuctions Where PId = " + (int)reader["PId"];
+                SqlCommand comm = new SqlCommand(deHis, conn);
+                comm.ExecuteNonQuery();
+            }
+            reader.Close();
+            string query1 = "Delete From HistoryAuctions Where UId = " + UId;
+            string query2 = "Delete From Products Where UId = "+UId;
+            string query3 = "Delete From Users Where UId = " + UId;
+            SqlCommand command = new SqlCommand(query1, conn);
+            SqlCommand command2 = new SqlCommand(query2, conn);
+            SqlCommand command3 = new SqlCommand(query3, conn);
+            command.ExecuteNonQuery();
+            command2.ExecuteNonQuery();
+            command3.ExecuteNonQuery();
+            conn.Close();
+            return RedirectToAction("Index");
+        }
+        public ActionResult DeleteCategory(int CId)
+        {
+            string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+            SqlConnection conn = new SqlConnection(sCon);
+            conn.Open();
+            string query = "Select PId from Products Where CId = " + CId;
+            SqlCommand command1 = new SqlCommand(query, conn);
+            SqlDataReader reader = command1.ExecuteReader();
+            while (reader.Read())
+            {
+                string deHis = "Delete From HistoryAuctions Where PId = " + (int)reader["PId"];
+                SqlCommand comm = new SqlCommand(deHis, conn);
+                comm.ExecuteNonQuery();
+            }
+            string dePro = "Delete From Products Where CId = " + CId;
+            string deCate = "Delete From Categories Where CId = "+CId;
+            SqlCommand command2 = new SqlCommand(dePro, conn);
+            SqlCommand command3 = new SqlCommand(deCate, conn);
+            command2.ExecuteNonQuery();
+            command3.ExecuteNonQuery();
+            reader.Close();
+            return View("Index");
         }
     }
 }

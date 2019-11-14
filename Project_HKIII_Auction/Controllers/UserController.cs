@@ -30,7 +30,7 @@ namespace Project_HKIII_Auction.Controllers
         public ActionResult CreateProduct()
         {
             ViewBag.Start = DateTime.Now;
-            ViewBag.Start = String.Format("{0:MM/dd/yyyy}", ViewBag.Start);
+            ViewBag.Start = String.Format("{0:dd/MM/yyyy}", ViewBag.Start);
             ViewBag.Cate = new SelectList(CDal.GetCategories(), "CId", "CName");
             return View();
         }
@@ -196,5 +196,17 @@ namespace Project_HKIII_Auction.Controllers
             var NList = (object)JsonConvert.SerializeObject(lists);
             return View(NList);
         }
+        public ActionResult Category(int CId)
+        {
+            var U = UDal.GetUsers();
+            var P = PDal.GetProducts();
+            var C = CDal.GetCategories();
+
+            var list = from u in U join p in P on u.UId equals p.UId join c in C on p.CId equals c.CId select new { u.UName, p.PName, p.Image, p.MinimumPrice, c.CName, p.DateStart, p.DateEnd, p.PId, p.Incremenent, p.Status, c.CId };
+            var l = list.Where(e => e.CId.Equals(CId));
+            var lists = (object)JsonConvert.SerializeObject(l);
+            return View(lists);
+        }
+
     }
 }
