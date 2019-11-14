@@ -129,7 +129,7 @@ namespace Project_HKIII_Auction.Controllers
 
                     string query = "Update Products Set Incremenent = @Price Where PId = @PId";
                     string queryHis = "Insert into HistoryAuctions Values(@PId, @UId, @Price, @Status, @DateBid)";
-                    string queryUpdate = "Update HistoryAuctions Set Status = @status Where PriceAuction < @Price";
+                    string queryUpdate = "Update HistoryAuctions Set Status = @status Where PriceAuction < @Price and PId = "+PId;
 
                     conn.Open();
                     //Update Price Auction

@@ -215,7 +215,7 @@
                     string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
                     SqlConnection conn = new SqlConnection(sCon);
                     string query = "Update Products Set Status = 'Over Time' Where PId = " + i.PId;
-                    string query1 = "Update HistoryAuctions Set Status = 'Winner' Where Status = 'Waiting'";
+                    string query1 = "Update HistoryAuctions Set Status = 'Winner' Where Status = 'Waiting' and PId = "+i.PId;
                     conn.Open();
                     SqlCommand command = new SqlCommand(query, conn);
                     SqlCommand command1 = new SqlCommand(query1, conn);
