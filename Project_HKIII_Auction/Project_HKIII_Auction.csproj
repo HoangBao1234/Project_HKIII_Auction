@@ -470,6 +470,7 @@
     <Content Include="Views\User\Notification.cshtml" />
     <Content Include="Views\Admin\DetailsUser.cshtml" />
     <Content Include="Views\User\Category.cshtml" />
+    <Content Include="Views\SignIn\SignInWithAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
