@@ -19,6 +19,7 @@ namespace Project_HKIII_Auction.Controllers
         CategoryDal CDal = new CategoryDal();
         HistoryDal HDal = new HistoryDal();
         Context context = new Context();
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.CCount = CDal.GetCategories().Count();
@@ -33,6 +34,7 @@ namespace Project_HKIII_Auction.Controllers
             var PList = (object)JsonConvert.SerializeObject(List);
             return View(PList);
         }
+        [Authorize]
         public ActionResult CreateCategory()
         {
             return View();
@@ -56,14 +58,17 @@ namespace Project_HKIII_Auction.Controllers
                 return View(category);
             }
         }
+        [Authorize]
         public ActionResult Categories()
         {
             return View(CDal.GetCategories());
         }
+        [Authorize]
         public ActionResult Users()
         {
             return View(UDal.GetUsers());
         }
+        [Authorize]
         public ActionResult Products()
         {
             return View(PDal.GetProducts());
@@ -107,7 +112,7 @@ namespace Project_HKIII_Auction.Controllers
                 return View("Categories", list.ToList());
             }
         }
-
+        [Authorize]
         public ActionResult HistoryAuction()
         {
             var His = HDal.GetHistoryAuctions();
@@ -138,11 +143,13 @@ namespace Project_HKIII_Auction.Controllers
                 return View("HistoryAuction", model1);
             }
         }
+        [Authorize]
         public ActionResult DetailsProduct(int PId)
         {
             Product product = PDal.GetProduct(PId);
             return View(product);
         }
+        [Authorize]
         public ActionResult DeleteProduct(int PId)
         {
             string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
@@ -154,15 +161,17 @@ namespace Project_HKIII_Auction.Controllers
             conn.Close();
             if (PDal.Delete(PId))
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Products");
             }
             return View();
         }
+        [Authorize]
         public ActionResult DetailsUser(int UId)
         {
             User user =  UDal.GetUser(UId);
             return View(user);
         }
+        [Authorize]
         public ActionResult DeleteUser(int UId)
         {
             string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
@@ -190,6 +199,7 @@ namespace Project_HKIII_Auction.Controllers
             conn.Close();
             return RedirectToAction("Index");
         }
+        [Authorize]
         public ActionResult DeleteCategory(int CId)
         {
             string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
@@ -204,6 +214,7 @@ namespace Project_HKIII_Auction.Controllers
                 SqlCommand comm = new SqlCommand(deHis, conn);
                 comm.ExecuteNonQuery();
             }
+            reader.Close();
             string dePro = "Delete From Products Where CId = " + CId;
             string deCate = "Delete From Categories Where CId = "+CId;
             SqlCommand command2 = new SqlCommand(dePro, conn);
@@ -211,7 +222,7 @@ namespace Project_HKIII_Auction.Controllers
             command2.ExecuteNonQuery();
             command3.ExecuteNonQuery();
             reader.Close();
-            return View("Index");
+            return RedirectToAction("Categories");
         }
     }
 }

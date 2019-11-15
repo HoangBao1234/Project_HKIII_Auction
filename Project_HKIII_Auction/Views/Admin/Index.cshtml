@@ -6,6 +6,13 @@
 @using Newtonsoft.Json;
 @using System.Data.SqlClient;
 @using System.Configuration;
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function Note() {
+        swal("Good job!", "You clicked the button!", "success");
+        return true;
+    }
+</script>
 @{ 
     var result = JsonConvert.DeserializeObject<dynamic>((string)Model);
 }
@@ -73,7 +80,7 @@
                                         <td>@i.DateStart</td>
                                         <td>@i.DateEnd</td>
                                         <td><a href="/Admin/DetailsProduct?PId=@i.PId">Details</a></td>
-                                        <td><a href="/Admin/DeleteProduct?PId=@i.PId">Delete</a></td>
+                                        <td><a href="/Admin/DeleteProduct?PId=@i.PId" onclick="Note()">Delete</a></td>
                                     </tr>
                                 }
                             </tbody>
@@ -116,9 +123,10 @@
                                                 <td>@reader[3]</td>
                                                 <td>@reader[4]</td>
                                                 <td><a href="/Admin/DetailsUser?UId=@UId ">Details</a></td>
-                                                <td><a href="/Admin/DeleteUser?UId=@UId">Delete</a></td>
+                                                <td><a href="/Admin/DeleteUser?UId=@UId" onclick="Note()"> Delete</a></td>
                                             </tr>
                                        }
+                                       reader.Close();
                                    }
                                 </tbody>
                             </table>

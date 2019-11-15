@@ -19,14 +19,17 @@ namespace Project_HKIII_Auction.Controllers
         HistoryDal HDal = new HistoryDal();
         NotificationDal NDal = new NotificationDal();
         Context context = new Context();
+        [Authorize]
         public ActionResult AboutUs()
         {
             return View();
         }
+        [Authorize]
         public ActionResult ContactUs()
         {
             return View();
         }
+        [Authorize]
         public ActionResult CreateProduct()
         {
             ViewBag.Start = DateTime.Now;
@@ -34,6 +37,7 @@ namespace Project_HKIII_Auction.Controllers
             ViewBag.Cate = new SelectList(CDal.GetCategories(), "CId", "CName");
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult CreateProduct(Product product)
         {
@@ -60,6 +64,7 @@ namespace Project_HKIII_Auction.Controllers
                 return View();
             }
         }
+        [Authorize]
         public ActionResult Home()
         {
 
@@ -70,11 +75,13 @@ namespace Project_HKIII_Auction.Controllers
             var convert = (object)JsonConvert.SerializeObject(list);
             return View(convert);
         }
+        [Authorize]
         public ActionResult Profiles(int UId)
         {
             User user = UDal.GetUser(UId); 
             return View(user);
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Profiles(User user)
         {
@@ -89,11 +96,13 @@ namespace Project_HKIII_Auction.Controllers
                 return View();
             }
         }
+        [Authorize]
         public ActionResult GetProduct(int PId)
         {
             Product product = PDal.GetProduct(PId);
             return View(product);
         }
+        [Authorize]
         public ActionResult HistoryAuction()
         {
             var Pro = PDal.GetProducts();
@@ -107,12 +116,14 @@ namespace Project_HKIII_Auction.Controllers
 
             return View(HisList);
         }
+        [Authorize]
         public ActionResult Auction(int PId)
         {
            
             Product product = PDal.GetProduct(PId);
             return View(product);
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Auction(int PId, int Price)
         {
@@ -172,6 +183,7 @@ namespace Project_HKIII_Auction.Controllers
                 return View("Auction", product);
             }
         }
+        [Authorize]
         public ActionResult MyProduct(string UName)
         {
             var P = PDal.GetProducts();
@@ -185,6 +197,7 @@ namespace Project_HKIII_Auction.Controllers
 
             return View(MyProduct);
         }
+        [Authorize]
         public ActionResult Notification(int UId)
         {
             var U = UDal.GetUsers();
@@ -196,6 +209,7 @@ namespace Project_HKIII_Auction.Controllers
             var NList = (object)JsonConvert.SerializeObject(lists);
             return View(NList);
         }
+        [Authorize]
         public ActionResult Category(int CId)
         {
             var U = UDal.GetUsers();
