@@ -48,7 +48,7 @@ namespace Project_HKIII_Auction.Controllers
                                 userSession.UId = admin.AId;
                                 userSession.UName = admin.AName;
                                 Session.Add("adminSeesion", userSession);
-                                FormsAuthentication.SetAuthCookie(admin.AName, true);
+                                FormsAuthentication.SetAuthCookie(admin.AName, false);
                                 return RedirectToAction("Index", "Admin");
                             }
                         }
@@ -62,7 +62,7 @@ namespace Project_HKIII_Auction.Controllers
                                     userSession.UId = check.UId;
                                     userSession.UName = check.UName;
                                     Session.Add("userSession", userSession);
-                                    FormsAuthentication.SetAuthCookie(check.UName, true);
+                                    FormsAuthentication.SetAuthCookie(check.UName, false);
                                     return RedirectToAction("Home", "User");
                                 }
                                 else
