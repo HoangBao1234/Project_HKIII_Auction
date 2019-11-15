@@ -11,6 +11,7 @@ namespace Project_HKIII_Auction.Controllers
     {
         // GET: SignIn
         UserDal dal = new UserDal();
+        AdminDal ADal = new AdminDal();
         public ActionResult Index_Signin()
         {
             return View();
@@ -49,13 +50,66 @@ namespace Project_HKIII_Auction.Controllers
                             else
                             {
                                 ViewBag.Msg = "This user name has already existed. Please recreate another user name";
-                                return View("Index_Signin");
+                                return View("SignInWithAdmin");
                             }
                         }
                     }
                 }
             }
+            else
+            {
+                return View();
+            }
+            
+        }
+        public ActionResult SignInWithAdmin()
+        {
             return View();
+        }
+        [HttpPost]
+        public ActionResult SignInWithAdmin(Admin admin, string passcon)
+        {
+            if (ModelState.IsValid)
+            {
+                if (admin.AName == null)
+                {
+                    ViewBag.u = "Please enter username";
+
+                    return View("SignInWithAdmin");
+                }
+                else
+                {
+                    if (admin.Password == null)
+                    {
+                        ViewBag.P = "Please enter password";
+                        return View("SignInWithAdmin");
+                    }
+                    else
+                    {
+                        if (!admin.Password.Equals(passcon))
+                        {
+                            ViewBag.C = "Password must be the same";
+                            return View("SignInWithAdmin");
+                        }
+                        else
+                        {
+                            if (ADal.Create(admin))
+                            {
+                                return RedirectToAction("Index_Login", "Login");
+                            }
+                            else
+                            {
+                                ViewBag.Msg = "This user name has already existed. Please recreate another user name";
+                                return View("SignInWithAdmin");
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

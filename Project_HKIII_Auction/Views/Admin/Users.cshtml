@@ -18,13 +18,12 @@
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
-                            <tr style="text-align:center">
+                            <tr>
                                 <th> User ID </th>
                                 <th> User Name </th>
                                 <th> Number Phone </th>
                                 <th> Address </th>
-                                <th> Image </th>
-                                <th colspan="2"> Action </th>
+                                <th colspan="2" style="text-align:center"> Action </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,9 +34,8 @@
                                     <td>@i.UName</td>
                                     <td>@i.Phone</td>
                                     <td>@i.Address</td>
-                                    <td>@i.Image</td>
-                                    <td>@Html.ActionLink("Delete", "Delete")</td>
-                                    <td>@Html.ActionLink("Details", "Details")</td>
+                                    <td><a href="/Admin/DetailsUser?UId=@i.UId">Details</a></td>
+                                    <td><a href="/Admin/DeleteUser?UId=@i.UId">Delete</a></td>
                                 </tr>
                             }
                         </tbody>

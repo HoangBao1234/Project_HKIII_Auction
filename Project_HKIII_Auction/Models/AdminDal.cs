@@ -12,5 +12,19 @@ namespace Project_HKIII_Auction.Models
         {
             return context.Admins.ToList();
         }
+        public bool Create(Admin admin)
+        {
+            Admin admin1 = context.Admins.SingleOrDefault(e=>e.AId.Equals(admin.AId));
+            if (admin1 == null)
+            {
+                context.Admins.Add(admin);
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

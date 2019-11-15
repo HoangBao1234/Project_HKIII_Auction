@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/Admin_Layout.cshtml";
 }
 @using Newtonsoft.Json;
+@using System.Data.SqlClient;
+@using System.Configuration;
 @{ 
     var result = JsonConvert.DeserializeObject<dynamic>((string)Model);
 }
@@ -48,15 +50,16 @@
                 <div class="card-body">
                     <h4 class="card-title">Recent Product</h4>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" style="text-align:center">
                             <thead>
                                 <tr>
-                                    <th> User </th>
+                                    <th> Posted By </th>
                                     <th> Product </th>
                                     <th> Category </th>
                                     <th> Min Price </th>
                                     <th> Date Start</th>
                                     <th> Date End</th>
+                                    <th colspan="2"> Action </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,6 +72,8 @@
                                         <td>@i.MinimumPrice</td>
                                         <td>@i.DateStart</td>
                                         <td>@i.DateEnd</td>
+                                        <td><a href="/Admin/DetailsProduct?PId=@i.PId">Details</a></td>
+                                        <td><a href="/Admin/DeleteProduct?PId=@i.PId">Delete</a></td>
                                     </tr>
                                 }
                             </tbody>
@@ -78,3 +83,47 @@
             </div>
         </div>
     </div>
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Recent Users</h4>
+                        <div class="table-responsive">
+                            <table class="table" style="text-align:center">
+                                <thead>
+                                    <tr style="text-align:center">
+                                        <th> User ID </th>
+                                        <th> User Name </th>
+                                        <th> Number Phone </th>
+                                        <th> Address </th>
+                                        <th colspan="2"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   @{ 
+                                       string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
+                                       string query = "Select * From Users";
+                                       SqlConnection conn = new SqlConnection(sCon);
+                                       conn.Open();
+                                       SqlCommand command = new SqlCommand(query, conn);
+                                       SqlDataReader reader = command.ExecuteReader();
+                                       while (reader.Read())
+                                       {
+                                           int UId = (int)reader[0];
+                                           <tr>
+                                                <td>@reader[0]</td>
+                                                <td>@reader[1]</td>
+                                                <td>@reader[3]</td>
+                                                <td>@reader[4]</td>
+                                                <td><a href="/Admin/DetailsUser?UId=@UId ">Details</a></td>
+                                                <td><a href="/Admin/DeleteUser?UId=@UId">Delete</a></td>
+                                            </tr>
+                                       }
+                                   }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

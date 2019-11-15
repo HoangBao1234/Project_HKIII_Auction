@@ -146,6 +146,7 @@
     <Compile Include="Models\CategoryDal.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\HistoryDal.cs" />
+    <Compile Include="Models\NotificationDal.cs" />
     <Compile Include="Models\ProductDal.cs" />
     <Compile Include="Models\Tables.cs" />
     <Compile Include="Models\UserDal.cs" />
@@ -251,6 +252,8 @@
     <Content Include="gulp-tasks\inject.js" />
     <Content Include="gulp-tasks\serve.js" />
     <Content Include="gulp-tasks\vendors.js" />
+    <Content Include="Image\Logo\Admin.png" />
+    <Content Include="Image\Logo\Auction.jpg" />
     <Content Include="Image\image_AboutUs\35720423_455584864891053_428675858270519296_n.jpg" />
     <Content Include="Image\image_AboutUs\53869282_996296183911420_7459694856927969280_n.jpg" />
     <Content Include="Image\image_AboutUs\59733550_2352428015041449_2767359029243019264_n.jpg" />
@@ -315,6 +318,7 @@
     <Content Include="Image\image_login signin\b2.jpg" />
     <Content Include="Image\image_login signin\bg.png" />
     <Content Include="Image\image_login signin\images.jpg" />
+    <Content Include="Image\Logo\Logo.png" />
     <Content Include="js\aos.js" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap.min.js" />
@@ -463,6 +467,10 @@
     <Content Include="Views\User\Auction.cshtml" />
     <Content Include="Views\User\MyProduct.cshtml" />
     <Content Include="Views\Admin\DetailsProduct.cshtml" />
+    <Content Include="Views\User\Notification.cshtml" />
+    <Content Include="Views\Admin\DetailsUser.cshtml" />
+    <Content Include="Views\User\Category.cshtml" />
+    <Content Include="Views\SignIn\SignInWithAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

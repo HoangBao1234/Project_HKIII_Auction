@@ -215,9 +215,12 @@
                     string sCon = ConfigurationManager.ConnectionStrings["hihi"].ConnectionString;
                     SqlConnection conn = new SqlConnection(sCon);
                     string query = "Update Products Set Status = 'Over Time' Where PId = " + i.PId;
+                    string query1 = "Update HistoryAuctions Set Status = 'Winner' Where Status = 'Waiting' and PId = "+i.PId;
                     conn.Open();
                     SqlCommand command = new SqlCommand(query, conn);
+                    SqlCommand command1 = new SqlCommand(query1, conn);
                     command.ExecuteNonQuery();
+                    command1.ExecuteNonQuery();
                     conn.Close();
                     date = "0 Days 00:00:00";
                 }

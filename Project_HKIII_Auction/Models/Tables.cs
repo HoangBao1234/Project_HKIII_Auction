@@ -31,10 +31,12 @@ namespace Project_HKIII_Auction.Models
         public string Image { set; get; }
 
         public virtual ICollection<Product> Products { set; get; }
+        public virtual ICollection<HistoryAuction> HistoryAuctions { set; get; }
 
         public User()
         {
             this.Products = new HashSet<Product>();
+            this.HistoryAuctions = new HashSet<HistoryAuction>();
         }
     }
     public class Product
@@ -86,12 +88,6 @@ namespace Project_HKIII_Auction.Models
 
         public virtual User User { set; get; }
         public virtual Category Category { set; get; }
-        public virtual ICollection<HistoryAuction> HistoryAuctions { set; get; }
-
-        public Product()
-        {
-            this.HistoryAuctions = new HashSet<HistoryAuction>();
-        }
     }
     public class Category
     {
@@ -117,7 +113,7 @@ namespace Project_HKIII_Auction.Models
         public string Status { set; get; }
         public DateTime DateBid { set; get; }
 
-        public virtual Product Product { set; get; }
+        public virtual User User { set; get; }
     }
     public class Notification
     {

@@ -22,10 +22,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th> User Name </th>
+                                <th> Auctioneer </th>
                                 <th> Product Name </th>
-                                <th> Starting price </th>
                                 <th> Price Auction </th>
+                                <th> Date Auction </th>
                                 <th> Status </th>
                             </tr>
                         </thead>
@@ -35,8 +35,8 @@
                                 <tr>
                                     <td>@i.UName</td>
                                     <td><a href="/Admin/DetailsProduct?PId=@i.PId">@i.PName</a></td>
-                                    <td>@i.MinimumPrice</td>
                                     <td>@i.PriceAuction</td>
+                                    <td>@i.DateBid</td>
                                     <td>@i.Status</td>
                                 </tr>
                             }

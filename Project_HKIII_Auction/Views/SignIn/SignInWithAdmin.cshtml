@@ -8,7 +8,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index_Login</title>
+    <title>SignIn Admin</title>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -83,24 +84,20 @@
                 background: rgba(0,0,0,.3);
             }
     </style>
-    
 </head>
 <body>
     <div class="signup-form">
-        <form name="FormLogin" id="login" action="~/Login/Check_Login" method="post">
-            <h1>Login</h1>
-            <input id="user" type="text" name="username" placeholder="Username" class="txtb" value="@ViewBag.UserName" >
+        <form class="" action="~/SignIn/SignInWithAdmin" method="post">
+            <h1>Sign Up</h1>
+            <input type="text" name="AName" placeholder="User Name" class="txtb">
             <span style="color:red">@ViewBag.u</span>
-            <span style="color:red">@ViewBag.MsgU</span>
-            <input id="pass" type="password" name="password" placeholder="Password" class="txtb">
-            <span style="color:red">@ViewBag.p</span>
-            <span style="color:red">@ViewBag.MsgP</span>
-            <input type="submit" id="submit" name="btnSub" value="Login" class="signup-btn">
-            <div>
-                <span><a href="/SignIn/Index_SignIn">Sign In</a></span>
-            </div>
+            <span style="color:red">@ViewBag.Msg</span>
+            <input type="password" name="Password" placeholder="Password" class="txtb">
+            <span style="color:red">@ViewBag.P</span>
+            <input type="password" name="PassCon" placeholder="Confirm Password" class="txtb" />
+            <span style="color:red">@ViewBag.C</span>
+            <input type="submit" value="Create Account" class="signup-btn">
         </form>
     </div>
-
 </body>
 </html>

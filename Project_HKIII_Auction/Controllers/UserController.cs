@@ -17,6 +17,7 @@ namespace Project_HKIII_Auction.Controllers
         UserDal UDal = new UserDal();
         CategoryDal CDal = new CategoryDal();
         HistoryDal HDal = new HistoryDal();
+        NotificationDal NDal = new NotificationDal();
         Context context = new Context();
         public ActionResult AboutUs()
         {
@@ -128,7 +129,7 @@ namespace Project_HKIII_Auction.Controllers
 
                     string query = "Update Products Set Incremenent = @Price Where PId = @PId";
                     string queryHis = "Insert into HistoryAuctions Values(@PId, @UId, @Price, @Status, @DateBid)";
-                    string queryUpdate = "Update HistoryAuctions Set Status = @status Where PriceAuction < @Price";
+                    string queryUpdate = "Update HistoryAuctions Set Status = @status Where PriceAuction < @Price and PId = "+PId;
 
                     conn.Open();
                     //Update Price Auction
@@ -183,6 +184,29 @@ namespace Project_HKIII_Auction.Controllers
             var MyProduct = (object)JsonConvert.SerializeObject(MyList);
 
             return View(MyProduct);
-        } 
+        }
+        public ActionResult Notification(int UId)
+        {
+            var U = UDal.GetUsers();
+            var P = PDal.GetProducts();
+            var N = NDal.GetNotifications();
+
+            var list = from u in U join n in N on u.UId equals n.UId join p in P on n.PId equals p.PId select new {u.UId, p.PName, p.Incremenent, n.Status };
+            var lists = list.Where(e=>e.UId.Equals(UId));
+            var NList = (object)JsonConvert.SerializeObject(lists);
+            return View(NList);
+        }
+        public ActionResult Category(int CId)
+        {
+            var U = UDal.GetUsers();
+            var P = PDal.GetProducts();
+            var C = CDal.GetCategories();
+
+            var list = from u in U join p in P on u.UId equals p.UId join c in C on p.CId equals c.CId select new { u.UName, p.PName, p.Image, p.MinimumPrice, c.CName, p.DateStart, p.DateEnd, p.PId, p.Incremenent, p.Status, c.CId };
+            var l = list.Where(e => e.CId.Equals(CId));
+            var lists = (object)JsonConvert.SerializeObject(l);
+            return View(lists);
+        }
+
     }
 }
